@@ -1,0 +1,26 @@
+table {
+  width: 100%;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 25%;
+}
+
+tr:not(.thead):nth-child(odd) {
+  background-color: lightblue;
+}
+
+tr:nth-child(even) {
+  background-color: #8ca5bd;
+}
+
+tr:not(.thead):hover {
+  background-color: yellow;
+  cursor: pointer;
+}
+
