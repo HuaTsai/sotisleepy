@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
@@ -62,7 +62,8 @@ export class SongListComponent implements AfterViewInit {
     };
   }
 
-  sayHello(song: Song) {
-    console.log('Hello: ', song.ytlink)
+  @Output() songSelected = new EventEmitter<Song>();
+  selectSong(song: Song) {
+    this.songSelected.emit(song);
   }
 }

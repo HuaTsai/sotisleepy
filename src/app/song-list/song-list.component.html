@@ -31,7 +31,7 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns" class="thead"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="sayHello(row)"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectSong(row)"></tr>
 
     <!-- Row shown when there is no matching data. -->
     <tr class="mat-row" *matNoDataRow>

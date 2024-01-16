@@ -1,0 +1,13 @@
+.flex-container {
+  display: flex;
+  justify-content: space-around;
+  padding: 30px 20px;
+}
+
+// .flex-left {
+//   flex-basis: 200px;
+// }
+
+.flex-right {
+  flex-grow: 6;
+}
