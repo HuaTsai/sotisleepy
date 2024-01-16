@@ -52,6 +52,7 @@ export class SongListComponent implements AfterViewInit {
     return {
       id: id,
       name: SONGS[Math.round(Math.random() * (SONGS.length - 1))],
+      artist: 'Dummy',
       ytlink: YTLINK[Math.round(Math.random() * (YTLINK.length - 1))],
       reserved: Math.round(Math.random() * 100).toString(),
       date: new Date(),
