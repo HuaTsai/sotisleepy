@@ -2,7 +2,7 @@
   <mat-label>Filter</mat-label>
   <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
   @if (input.value) {
-    <button matSuffix mat-icon-button aria-label="Clear" (click)="input.value=''">
+    <button matSuffix mat-icon-button aria-label="Clear" (click)="input.value=''; dataSource.filter=''">
       <mat-icon>close</mat-icon>
     </button>
   }

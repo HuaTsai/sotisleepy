@@ -1,1 +1,46 @@
-<p>intro works!</p>
+<br />
+<br />
+<div>
+  <a href="https://www.youtube.com/@sotisleepy">
+    <fa-icon
+      icon="youtube"
+      size="3x"
+      class="icon"
+      [animation]="animatedIcon === 'youtube' ? 'beat' : undefined"
+      (mouseenter)="onMouseEnter('youtube')"
+      (mouseleave)="onMouseLeave()"
+    ></fa-icon>
+  </a>
+
+  <a href="https://twitter.com/sotisleepy">
+    <fa-icon
+      icon="twitter"
+      size="3x"
+      class="icon"
+      [animation]="animatedIcon === 'twitter' ? 'bounce' : undefined"
+      (mouseenter)="onMouseEnter('twitter')"
+      (mouseleave)="onMouseLeave()"
+    ></fa-icon>
+  </a>
+
+  <fa-icon
+    icon="instagram"
+    size="3x"
+    class="icon"
+    [animation]="animatedIcon === 'instagram' ? 'shake' : undefined"
+    (mouseenter)="onMouseEnter('instagram')"
+    (mouseleave)="onMouseLeave()"
+  ></fa-icon>
+
+  <fa-icon
+    icon="facebook"
+    size="3x"
+    class="icon"
+    [animation]="animatedIcon === 'facebook' ? 'spin' : undefined"
+    (mouseenter)="onMouseEnter('facebook')"
+    (mouseleave)="onMouseLeave()"
+  ></fa-icon>
+</div>
+<br />
+<p class="para">Introduction of sotis here.</p>
+
