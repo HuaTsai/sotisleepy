@@ -5,33 +5,53 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { SONGS, YTLINK, Song } from './song';
+import { StreamSong, CoverSong, RenderSong } from '../common/datatype';
+import { SongService } from '../services/song.service';
+import { CommonModule } from '@angular/common';
+import { MinutesSecondsPipe } from '../common/minutes-seconds.pipe';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-song-list',
   standalone: true,
   imports: [
+    CommonModule,
     MatFormFieldModule,
     MatInputModule,
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
+    MatButtonModule,
+    MatIconModule,
+    MinutesSecondsPipe
   ],
   templateUrl: './song-list.component.html',
   styleUrl: './song-list.component.scss',
 })
 export class SongListComponent implements AfterViewInit {
-  displayedColumns: string[] = ['id', 'name', 'ytlink', 'reserved'];
-  dataSource: MatTableDataSource<Song>;
+  displayedColumns: string[] = ['id', 'name', 'youtube_url', 'duration'];
+  dataSource: MatTableDataSource<RenderSong>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor() {
-    const songs = Array.from({ length: 50 }, (_, k) =>
-      this.createNewSong(k + 1),
-    );
+  constructor(private songService: SongService) {
+    const songs = this.convertCoverSongToRenderSong(songService.coverList);
     this.dataSource = new MatTableDataSource(songs);
+  }
+
+  convertCoverSongToRenderSong(song: CoverSong []): RenderSong [] {
+    var renderSong: RenderSong[] = [];
+    for (var i = 0; i < song.length; i++) {
+      renderSong.push({
+        id: i + 1,
+        name: song[i].name,
+        youtube_url: song[i].youtube_url,
+        duration: song[i].duration,
+      });
+    }
+    return renderSong;
   }
 
   ngAfterViewInit() {
@@ -48,22 +68,9 @@ export class SongListComponent implements AfterViewInit {
     }
   }
 
-  createNewSong(id: number): Song {
-    return {
-      id: id,
-      name: SONGS[Math.round(Math.random() * (SONGS.length - 1))],
-      artist: 'Dummy',
-      ytlink: YTLINK[Math.round(Math.random() * (YTLINK.length - 1))],
-      reserved: Math.round(Math.random() * 100).toString(),
-      date: new Date(),
-      start_time: Math.round(Math.random() * 100),
-      end_time: Math.round(Math.random() * 100),
-      duration: Math.round(Math.random() * 100)
-    };
-  }
-
-  @Output() songSelected = new EventEmitter<Song>();
-  selectSong(song: Song) {
+  // @Input() type: string = 'song';
+  @Output() songSelected = new EventEmitter<RenderSong>();
+  selectSong(song: RenderSong) {
     this.songSelected.emit(song);
   }
 }

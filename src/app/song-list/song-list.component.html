@@ -1,39 +1,39 @@
 <mat-form-field>
   <mat-label>Filter</mat-label>
-  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+  <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
+  @if (input.value) {
+    <button matSuffix mat-icon-button aria-label="Clear" (click)="input.value=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  }
 </mat-form-field>
 
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource" matSort matSortActive="id" matSortDirection="desc" class="striped-table">
 
-    <!-- ID Column -->
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
       <td mat-cell *matCellDef="let row"> {{row.id}} </td>
     </ng-container>
 
-    <!-- Name Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
       <td mat-cell *matCellDef="let row"> {{row.name}} </td>
     </ng-container>
 
-    <!-- Progress Column -->
-    <ng-container matColumnDef="ytlink">
+    <ng-container matColumnDef="youtube_url">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Youtube Link </th>
-      <td mat-cell *matCellDef="let row"> https://youtu.be/{{row.ytlink}} </td>
+      <td mat-cell *matCellDef="let row"> https://youtu.be/{{row.youtube_url}} </td>
     </ng-container>
 
-    <!-- Fruit Column -->
-    <ng-container matColumnDef="reserved">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Reserved </th>
-      <td mat-cell *matCellDef="let row"> {{row.reserved}} </td>
+    <ng-container matColumnDef="duration">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Duration </th>
+      <td mat-cell *matCellDef="let row"> {{row.duration | minutesSeconds}} </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns" class="thead"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectSong(row)"></tr>
 
-    <!-- Row shown when there is no matching data. -->
     <tr class="mat-row" *matNoDataRow>
       <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
     </tr>

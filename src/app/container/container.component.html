@@ -1,9 +1,23 @@
 <div class="flex-container">
   <div class="flex-left">
     <youtube-player [videoId]="videoId"></youtube-player>
+    <app-intro></app-intro>
   </div>
   <div class="flex-right">
-    <app-song-list (songSelected)="getSongSelected($event)"></app-song-list>
+    <mat-tab-group>
+      <mat-tab label="Song List">
+        <app-song-list (songSelected)="getSongSelected($event)"></app-song-list>
+      </mat-tab>
+      <mat-tab label="Cover List">
+        <app-song-list (songSelected)="getSongSelected($event)"></app-song-list>
+      </mat-tab>
+      <mat-tab label="Suggestion List">
+        <p> Sotis Suggestions </p>
+      </mat-tab>
+      <mat-tab label="Soraru List">
+        <p> Secret: seldom appears </p>
+      </mat-tab>
+    </mat-tab-group>
   </div>
 </div>
 
