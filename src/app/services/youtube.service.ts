@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class YoutubeService {
   channelId = 'UCgGso0vVI2wfXHeXcxn1sZA';
-  apiUrl = 'https://youtube.googleapis.com/youtube/v3/key=AIzaSyBmCKkkh7NxzdjO1OuqhBXL-LjhSXM7JDU';
+  apiUrl = 'https://youtube.googleapis.com/youtube/v3/';
   // video api: 'videos?part=snippet%2CcontentDetails%2Cstatistics&id=HUPn0JZjntw'
 
   constructor(private http: HttpClient) {}
@@ -20,7 +20,7 @@ export class YoutubeService {
 
     this.http
       .get(
-        this.apiUrl + '&channels?part=snippet%2CcontentDetails%2Cstatistics&id=UCgGso0vVI2wfXHeXcxn1sZA' +
+        this.apiUrl + 'channels?part=snippet%2CcontentDetails%2Cstatistics&id=UCgGso0vVI2wfXHeXcxn1sZA' +
       options)
       .subscribe((res) => console.log(res));
   }
