@@ -49,6 +49,7 @@ export class SongListComponent implements AfterViewInit {
         name: song[i].name,
         youtube_url: song[i].youtube_url,
         duration: song[i].duration,
+        start_time: 0,
       });
     }
     return renderSong;

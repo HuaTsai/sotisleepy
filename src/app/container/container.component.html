@@ -1,6 +1,10 @@
 <div class="flex-container">
   <div class="flex-left">
-    <youtube-player [videoId]="videoId"></youtube-player>
+    <!-- 854 x 480 or 640 x 360 -->
+    <iframe width="640" height="360" [src]="videoId | safe: 'resourceUrl'" title="Youtube Player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <br/>
+    <!-- short 315 x 560, 1.2x 378 x 672 -->
+    <!-- <iframe width="378" height="672" [src]="videoShort | safe: 'resourceUrl'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
     <app-intro></app-intro>
   </div>
   <div class="flex-right">

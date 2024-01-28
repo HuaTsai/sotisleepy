@@ -10,6 +10,12 @@ export class SongService {
   streamSongList: StreamSong[] = [];
   coverList: CoverSong[] = [
     {
+      name: 'ARCADIA (unlisted)',
+      date: new Date('2022-06-08'),
+      youtube_url: 'cZJqnkT0D7w',
+      duration: 431
+    },
+    {
       name: 'Rightfully',
       date: new Date('2022-06-17'),
       youtube_url: 'SGyLnr1NhdA',

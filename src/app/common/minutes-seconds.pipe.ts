@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   standalone: true,
-  name: 'minutesSeconds'
+  name: 'minutesSeconds',
 })
 export class MinutesSecondsPipe implements PipeTransform {
   transform(value: number): string {
@@ -11,4 +11,3 @@ export class MinutesSecondsPipe implements PipeTransform {
     return minutes + ':' + seconds.toString().padStart(2, '0');
   }
 }
-
