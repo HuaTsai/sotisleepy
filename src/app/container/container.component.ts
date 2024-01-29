@@ -3,12 +3,15 @@ import { SongListComponent } from '../song-list/song-list.component';
 import { RenderSong } from '../common/datatype';
 import { IntroComponent } from '../intro/intro.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { SafePipe } from '../common/safe.pipe';
 
 @Component({
   selector: 'app-container',
   standalone: true,
-  imports: [MatTabsModule, SongListComponent, IntroComponent, SafePipe],
+  imports: [MatTabsModule, MatIconModule, MatButtonModule, MatToolbarModule, SongListComponent, IntroComponent, SafePipe],
   templateUrl: './container.component.html',
   styleUrl: './container.component.scss',
 })
