@@ -1,13 +1,24 @@
-<mat-toolbar color="primary">
-  <span>Myo Sotis</span>
-  <span class="spacer"></span>
-  <button mat-icon-button ><mat-icon>favorite</mat-icon></button>
-  <button mat-icon-button ><mat-icon>share</mat-icon></button>
-</mat-toolbar>
+<div class="header">
+  <mat-toolbar color="primary">
+    <span>Myo Sotis</span>
+    <span class="spacer"></span>
+    <!-- TODO: may replace with a tag -->
+    <button mat-icon-button>
+      <fa-icon [icon]="['fas', 'heart']"></fa-icon>
+    </button>
+    <button mat-icon-button>
+      <fa-icon [icon]="['fas', 'share-nodes']"></fa-icon>
+    </button>
+    <button mat-icon-button>
+      <fa-icon [icon]="['fas', 'bug']"></fa-icon>
+    </button>
+  </mat-toolbar>
+</div>
 
 <div class="flex-container">
   <div class="flex-left">
     <!-- 854 x 480 or 640 x 360 -->
+    <!-- short 315 x 560, 1.2x 378 x 672 -->
     <iframe
       width="640"
       height="360"
@@ -17,16 +28,6 @@
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       allowfullscreen
     ></iframe>
-    <br />
-    <!-- short 315 x 560, 1.2x 378 x 672 -->
-    <!-- <iframe -->
-    <!--   width="378" -->
-    <!--   height="672" -->
-    <!--   [src]="videoShort | safe: 'resourceUrl'" -->
-    <!--   frameborder="0" -->
-    <!--   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" -->
-    <!--   allowfullscreen -->
-    <!-- ></iframe> -->
     <app-intro></app-intro>
   </div>
   <div class="flex-right">

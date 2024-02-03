@@ -30,7 +30,7 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './song-list.component.scss',
 })
 export class SongListComponent implements AfterViewInit {
-  displayedColumns: string[] = ['id', 'name', 'youtube_url', 'duration'];
+  displayedColumns: string[] = ['name', 'date', 'youtube_url', 'duration'];
   dataSource: MatTableDataSource<RenderSong>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -47,6 +47,7 @@ export class SongListComponent implements AfterViewInit {
       renderSong.push({
         id: i + 1,
         name: song[i].name,
+        date: song[i].date,
         youtube_url: song[i].youtube_url,
         duration: song[i].duration,
         start_time: 0,

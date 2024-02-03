@@ -1,14 +1,17 @@
 import { Component } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
-import { FaIconComponent, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {
+  FaIconComponent,
+  FontAwesomeModule,
+} from '@fortawesome/angular-fontawesome';
 import { YoutubeService } from '../services/youtube.service';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-intro',
   standalone: true,
-  imports: [MatIconModule, FontAwesomeModule],
+  imports: [FontAwesomeModule, MatButtonModule],
   templateUrl: './intro.component.html',
-  styleUrl: './intro.component.scss'
+  styleUrl: './intro.component.scss',
 })
 export class IntroComponent {
   animatedIcon: string | null = null;
