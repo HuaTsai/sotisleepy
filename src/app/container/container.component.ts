@@ -10,6 +10,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { SafePipe } from '../common/safe.pipe';
+import { MediaDirective } from '../common/media.directive';
 
 @Component({
   selector: 'app-container',
@@ -22,6 +23,7 @@ import { SafePipe } from '../common/safe.pipe';
     SongListComponent,
     IntroComponent,
     SafePipe,
+    MediaDirective
   ],
   templateUrl: './container.component.html',
   styleUrl: './container.component.scss',
