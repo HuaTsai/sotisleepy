@@ -9,10 +9,12 @@ export interface StreamSong {
 }
 
 export interface CoverSong {
+  id: number,
   name: string;
   date: Date;
   youtube_url: string;
   duration: number;
+  song: number;
 }
 
 export interface Song {

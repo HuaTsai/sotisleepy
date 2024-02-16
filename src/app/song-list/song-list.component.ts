@@ -24,28 +24,29 @@ import { MatIconModule } from '@angular/material/icon';
     MatPaginatorModule,
     MatButtonModule,
     MatIconModule,
-    MinutesSecondsPipe
+    MinutesSecondsPipe,
   ],
   templateUrl: './song-list.component.html',
   styleUrl: './song-list.component.scss',
 })
 export class SongListComponent implements AfterViewInit {
   displayedColumns: string[] = ['name', 'date', 'youtube_url', 'duration'];
-  dataSource: MatTableDataSource<RenderSong>;
+  dataSource = new MatTableDataSource<RenderSong>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(private songService: SongService) {
-    const songs = this.convertCoverSongToRenderSong(songService.coverList);
-    this.dataSource = new MatTableDataSource(songs);
+    this.songService.getCovers().subscribe(covers =>
+      this.dataSource.data = this.convertCoverSongToRenderSong(covers)
+    )
   }
 
-  convertCoverSongToRenderSong(song: CoverSong []): RenderSong [] {
+  convertCoverSongToRenderSong(song: CoverSong[]): RenderSong[] {
     var renderSong: RenderSong[] = [];
     for (var i = 0; i < song.length; i++) {
       renderSong.push({
-        id: i + 1,
+        id: song[i].id,
         name: song[i].name,
         date: song[i].date,
         youtube_url: song[i].youtube_url,

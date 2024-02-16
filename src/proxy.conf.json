@@ -1,0 +1,14 @@
+{
+  "/songs": {
+    "target": "http://localhost:8000",
+    "secure": false
+  },
+  "/covers": {
+    "target": "http://localhost:8000",
+    "secure": false
+  },
+  "/streams": {
+    "target": "http://localhost:8000",
+    "secure": false
+  },
+}
