@@ -22,7 +22,6 @@ export interface Song {
   duration: number;
   year: number;
   lyrics: string;
-  lyrics_source: string;
 }
 
 export interface RenderSong {
