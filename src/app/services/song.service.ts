@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class SongService {
   // TODO: use http stream & share replay, make apiUrl configurable
   // readonly apiUrl = 'http://localhost:8000';
-  readonly apiUrl = 'https://sotis-website-412614.de.r.appspot.com';
+  readonly apiUrl = 'https://sotis-website-412614.de.r.appspot.com/api';
 
   streamSongList: StreamSong[] = [];
   coverList: CoverSong[] = [];
