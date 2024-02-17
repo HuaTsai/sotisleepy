@@ -26,7 +26,9 @@ export class IntroComponent {
     this.animatedIcon = null;
   }
 
-  getInfo() {
-    this.youtubeService.getInfo();
+  getSubsCount(): string {
+    let subsCount = 0;
+    this.youtubeService.getSubsCount$.subscribe(data => subsCount = data);
+    return (subsCount / 1000).toFixed(1).toString() + 'k';
   }
 }

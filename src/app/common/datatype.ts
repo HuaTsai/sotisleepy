@@ -3,8 +3,8 @@ export interface StreamSong {
   name: string;
   date: Date;
   youtube_url: string;
-  start_time: number;
-  end_time: number;
+  start_time: string;
+  end_time: string;
   duration: number;
 }
 
@@ -13,7 +13,7 @@ export interface CoverSong {
   name: string;
   date: Date;
   youtube_url: string;
-  duration: number;
+  duration: string;
   song: number;
 }
 

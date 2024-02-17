@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input, SimpleChange } from '@angular/core';
 import { AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
@@ -35,23 +35,62 @@ export class SongListComponent implements AfterViewInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  @Input() songType!: string;
 
-  constructor(private songService: SongService) {
-    this.songService.covers$.subscribe(covers =>
-      this.dataSource.data = this.convertCoverSongToRenderSong(covers)
-    )
+  constructor(private songService: SongService) {}
+
+  ngOnChanges(changes: SimpleChange) {
+    if (this.songType === 'covers') {
+      this.songService.covers$.subscribe(covers =>
+        this.dataSource.data = this.convertCoverSongToRenderSong(covers)
+      );
+    } else if (this.songType === 'streams') {
+      this.songService.streams$.subscribe(streams =>
+        this.dataSource.data = this.convertStreamSongToRenderSong(streams)
+      );
+    }
+  }
+
+  convertStringToSeconds(time: string): number {
+    const parts = time.split(':').map(part => +part);
+    if (parts.length === 3) {
+      return (parts[0] * 3600) + (parts[1] * 60) + parts[2];
+    } else if (parts.length === 2) {
+      return (parts[0] * 60) + parts[1];
+    } else if (parts.length === 3) {
+      return parts[0];
+    } else {
+      throw new Error('Invalid time format');
+    }
   }
 
   convertCoverSongToRenderSong(song: CoverSong[]): RenderSong[] {
-    var renderSong: RenderSong[] = [];
-    for (var i = 0; i < song.length; i++) {
+    let renderSong: RenderSong[] = [];
+    for (let i = 0; i < song.length; i++) {
       renderSong.push({
         id: song[i].id,
         name: song[i].name,
         date: song[i].date,
         youtube_url: song[i].youtube_url,
-        duration: song[i].duration,
+        duration: this.convertStringToSeconds(song[i].duration),
         start_time: 0,
+      });
+    }
+    return renderSong;
+  }
+
+  convertStreamSongToRenderSong(song: StreamSong[]): RenderSong[] {
+    let renderSong: RenderSong[] = [];
+    for (let i = 0; i < song.length; i++) {
+      let start_time = this.convertStringToSeconds(song[i].start_time);
+      let end_time = this.convertStringToSeconds(song[i].end_time);
+      renderSong.push({
+        id: song[i].id,
+        name: song[i].name,
+        date: song[i].date,
+        youtube_url: song[i].youtube_url,
+        duration: end_time - start_time,
+        start_time: start_time
       });
     }
     return renderSong;

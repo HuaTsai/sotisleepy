@@ -51,10 +51,10 @@
   <div class="flex-right">
     <mat-tab-group>
       <mat-tab label="Song List">
-        <app-song-list (songSelected)="getSongSelected($event)"></app-song-list>
+        <app-song-list [songType]="'streams'" (songSelected)="getSongSelected($event)"></app-song-list>
       </mat-tab>
       <mat-tab label="Cover List">
-        <app-song-list (songSelected)="getSongSelected($event)"></app-song-list>
+        <app-song-list [songType]="'covers'" (songSelected)="getSongSelected($event)"></app-song-list>
       </mat-tab>
       <mat-tab label="Suggestion List">
         <p>Sotis Suggestions</p>

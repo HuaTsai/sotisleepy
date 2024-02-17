@@ -22,7 +22,7 @@ export class SongService {
     shareReplay(1)
   );
 
-  streamSongs$ = this.http.get<StreamSong[]>(this.apiUrl + '/stream_songs/').pipe(
+  streams$ = this.http.get<StreamSong[]>(this.apiUrl + '/streams/').pipe(
     shareReplay(1)
   );
 }
