@@ -37,7 +37,7 @@ export class SongListComponent implements AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(private songService: SongService) {
-    this.songService.getCovers().subscribe(covers =>
+    this.songService.covers$.subscribe(covers =>
       this.dataSource.data = this.convertCoverSongToRenderSong(covers)
     )
   }
