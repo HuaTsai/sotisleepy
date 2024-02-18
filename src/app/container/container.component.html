@@ -49,19 +49,29 @@
     <app-intro></app-intro>
   </div>
   <div class="flex-right">
-    <mat-tab-group>
-      <mat-tab label="Song List">
-        <app-song-list [songType]="'streams'" (songSelected)="getSongSelected($event)"></app-song-list>
-      </mat-tab>
-      <mat-tab label="Cover List">
-        <app-song-list [songType]="'covers'" (songSelected)="getSongSelected($event)"></app-song-list>
-      </mat-tab>
-      <mat-tab label="Suggestion List">
-        <p>Sotis Suggestions</p>
-      </mat-tab>
-      <mat-tab label="Soraru List">
-        <p>Secret: seldom appears</p>
-      </mat-tab>
-    </mat-tab-group>
+    <div [hidden]="!allDataLoaded">
+      <mat-tab-group>
+        <mat-tab label="Song List">
+          <app-song-list
+            [songType]="'streams'"
+            (dataLoadedEvent)="onDataLoaded($event)"
+            (songSelected)="getSongSelected($event)"
+          ></app-song-list>
+        </mat-tab>
+        <mat-tab label="Cover List">
+          <app-song-list
+            [songType]="'covers'"
+            (dataLoadedEvent)="onDataLoaded($event)"
+            (songSelected)="getSongSelected($event)"
+          ></app-song-list>
+        </mat-tab>
+        <mat-tab label="Suggestion List">
+          <p>Sotis Suggestions</p>
+        </mat-tab>
+        <mat-tab label="Soraru List">
+          <p>Secret: seldom appears</p>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
   </div>
 </div>

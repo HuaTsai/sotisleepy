@@ -36,18 +36,21 @@ export class SongListComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @Input() songType!: string;
+  @Output() dataLoadedEvent = new EventEmitter<boolean>();
 
   constructor(private songService: SongService) {}
 
   ngOnChanges(changes: SimpleChange) {
     if (this.songType === 'covers') {
-      this.songService.covers$.subscribe(covers =>
-        this.dataSource.data = this.convertCoverSongToRenderSong(covers)
-      );
+      this.songService.covers$.subscribe(covers => {
+        this.dataSource.data = this.convertCoverSongToRenderSong(covers);
+        this.dataLoadedEvent.emit(true);
+      });
     } else if (this.songType === 'streams') {
-      this.songService.streams$.subscribe(streams =>
-        this.dataSource.data = this.convertStreamSongToRenderSong(streams)
-      );
+      this.songService.streams$.subscribe(streams => {
+        this.dataSource.data = this.convertStreamSongToRenderSong(streams);
+        this.dataLoadedEvent.emit(true);
+      });
     }
   }
 
