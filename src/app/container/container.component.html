@@ -1,3 +1,5 @@
+<script src="https://www.youtube.com/iframe_api"></script>
+
 <div class="header">
   <mat-toolbar color="primary">
     <span>Myo Sotis</span>
@@ -23,6 +25,7 @@
     <!-- Desktop -->
     <div *appMedia="'(min-width: 768px)'">
       <iframe
+        id="player"
         width="640"
         height="360"
         [src]="videoId | safe: 'resourceUrl'"
@@ -36,6 +39,7 @@
     <!-- Mobile -->
     <div *appMedia="'(max-width: 767px)'">
       <iframe
+        id="player"
         width="100%"
         height="225"
         [src]="videoId | safe: 'resourceUrl'"
@@ -75,3 +79,8 @@
     </div>
   </div>
 </div>
+
+<footer class="footer">
+  <p class="copyright">&copy; 2024 HuaTsai. All rights reserved.</p>
+  <p class="acknowledgement">Special thanks to <a href="https://twitter.com/yukiyuki_amano">天野ゆきゆき</a> for inspiring the website design, and to <a href="https://twitter.com/DXEE0622">DXEE</a> for the data collection.</p>
+</footer>

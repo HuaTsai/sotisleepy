@@ -37,6 +37,23 @@ export class ContainerComponent {
   dataLoadedCount = 0;
   allDataLoaded = false;
 
+  // TODO: Add youtube player api
+  // ytstatus = 'unstarted';
+  //
+  // onYoutubeIframeAPIReady() {
+  //   player = new YT.Player('player', {
+  //     events: {
+  //       'onStateChange': onPlayerStateChange
+  //     }
+  //   });
+  // }
+
+  // onPlayerStateChange(event) {
+  //   if (event.data === YT.PlayerState.PLAYING) {
+  //     this.ytstatus = 'Playing';
+  //   }
+  // }
+
   onDataLoaded(event: boolean) {
     this.dataLoadedCount++;
     if (this.dataLoadedCount === 2) {
@@ -44,20 +61,16 @@ export class ContainerComponent {
     }
   }
 
-  toEmbedUrl(song: RenderSong, autoplay: boolean = true): string {
+  toEmbedUrl(song: RenderSong): string {
     return (
-      'https://www.youtube.com/embed/' +
-      song.youtube_url +
-      '?cc_load_policy=1' +
-      '&start=' +
-      song.start_time +
-      '&end=' +
-      (song.start_time + song.duration) + // XXX: May remove
-      (autoplay ? '&autoplay=1' : '')
+      'https://www.youtube.com/embed/' + song.youtube_url +
+      '?autoplay=1&cc_load_policy=1&enablejsapi=1' +
+      '&start=' + song.start_time +
+      '&end=' + (song.start_time + song.duration) // XXX: May remove
     );
   }
 
   getSongSelected(song: RenderSong) {
-    this.videoId = this.toEmbedUrl(song, true);
+    this.videoId = this.toEmbedUrl(song);
   }
 }

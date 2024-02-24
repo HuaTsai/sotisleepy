@@ -21,11 +21,6 @@
       <td mat-cell *matCellDef="let row">{{row.date | date: 'yyyy-MM-dd'}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="youtube_url">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Youtube Link </th>
-      <td mat-cell *matCellDef="let row"> https://youtu.be/{{row.youtube_url}} </td>
-    </ng-container>
-
     <ng-container matColumnDef="duration">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Duration </th>
       <td mat-cell *matCellDef="let row"> {{row.duration | minutesSeconds}} </td>

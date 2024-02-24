@@ -10,9 +10,7 @@ import { environment } from '../../environments/environment';
 export class SongService {
   readonly apiUrl = `${environment.apiUrl}`;
 
-  constructor(private http: HttpClient) {
-    console.log('apiUrl', this.apiUrl);
-  }
+  constructor(private http: HttpClient) {}
 
   songs$ = this.http.get<StreamSong[]>(this.apiUrl + '/songs/').pipe(
     shareReplay(1)
