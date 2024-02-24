@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { shareReplay } from 'rxjs';
+import { delay, retryWhen, shareReplay, take } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +12,7 @@ export class YoutubeService {
   constructor(private http: HttpClient) {}
 
   getSubsCount$ = this.http.get<number>(this.apiUrl + '/subscount').pipe(
-    shareReplay(1)
+    shareReplay(1),
+    retryWhen(errors => errors.pipe(delay(1000), take(3)))
   );
 }

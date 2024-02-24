@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FaIconComponent,
   FontAwesomeModule,
@@ -13,10 +13,18 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: './intro.component.html',
   styleUrl: './intro.component.scss',
 })
-export class IntroComponent {
+export class IntroComponent implements OnInit {
   animatedIcon: string | null = null;
 
+  subsCount = '0.00k';
+
   constructor(private youtubeService: YoutubeService) {}
+
+  ngOnInit() {
+    this.youtubeService.getSubsCount$.subscribe(
+      (data) => (this.subsCount = (data / 1000).toFixed(1).toString() + 'k'),
+    );
+  }
 
   onMouseEnter(icon: string) {
     this.animatedIcon = icon;
@@ -24,11 +32,5 @@ export class IntroComponent {
 
   onMouseLeave() {
     this.animatedIcon = null;
-  }
-
-  getSubsCount(): string {
-    let subsCount = 0;
-    this.youtubeService.getSubsCount$.subscribe(data => subsCount = data);
-    return (subsCount / 1000).toFixed(1).toString() + 'k';
   }
 }

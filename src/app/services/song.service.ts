@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { StreamSong, CoverSong } from '../common/datatype'
-import { Observable, shareReplay } from 'rxjs';
+import { Observable, delay, retryWhen, shareReplay, take } from 'rxjs';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -13,14 +13,17 @@ export class SongService {
   constructor(private http: HttpClient) {}
 
   songs$ = this.http.get<StreamSong[]>(this.apiUrl + '/songs/').pipe(
-    shareReplay(1)
+    shareReplay(1),
+    retryWhen(errors => errors.pipe(delay(1000), take(3)))
   );
 
   covers$ = this.http.get<CoverSong[]>(this.apiUrl + '/covers/').pipe(
-    shareReplay(1)
+    shareReplay(1),
+    retryWhen(errors => errors.pipe(delay(1000), take(3)))
   );
 
   streams$ = this.http.get<StreamSong[]>(this.apiUrl + '/streams/').pipe(
-    shareReplay(1)
+    shareReplay(1),
+    retryWhen(errors => errors.pipe(delay(1000), take(3)))
   );
 }
