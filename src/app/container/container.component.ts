@@ -31,7 +31,8 @@ import { CommonModule } from '@angular/common';
   styleUrl: './container.component.scss',
 })
 export class ContainerComponent {
-  videoId = 'https://www.youtube.com/embed/YjOFrKd7dCs';
+  // videoId = 'https://www.youtube.com/embed/og7GA4PPsCw?autoplay=1&cc_load_policy=1&enablejsapi=1&start=12145&end=12150';
+  videoId = 'https://www.youtube.com/embed/og7GA4PPsCw';
   videoShort = 'https://www.youtube.com/embed/Bg1dwt79iG8';
 
   dataLoadedCount = 0;

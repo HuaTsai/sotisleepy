@@ -3,19 +3,23 @@
 }
 
 p {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .intro {
-  font-size: 20px;
+  font-size: 22px;
   display: flex;
 }
 
-.statistics {
-  flex: 1;
+.spacer {
+  flex: 1 1 auto;
 }
 
-.name {
-  flex: 1;
+.intro-item {
+  padding: 0 6px;
+}
+
+.intro span:nth-child(n+4) {
+  border-left: 2px solid #000;
 }
 
