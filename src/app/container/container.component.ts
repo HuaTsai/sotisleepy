@@ -64,7 +64,7 @@ export class ContainerComponent {
 
   toEmbedUrl(song: RenderSong): string {
     return (
-      'https://www.youtube.com/embed/' + song.youtube_url +
+      'https://www.youtube-nocookie.com/embed/' + song.youtube_url +
       '?autoplay=1&cc_load_policy=1&enablejsapi=1' +
       '&start=' + song.start_time +
       '&end=' + (song.start_time + song.duration) // XXX: May remove
