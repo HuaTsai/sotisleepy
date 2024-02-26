@@ -50,7 +50,10 @@
       ></iframe>
     </div>
 
-    <app-intro></app-intro>
+    <app-intro
+      [streamsCount]="streams.dataSource.data.length"
+      [coversCount]="covers.dataSource.data.length"
+    ></app-intro>
   </div>
   <div class="flex-right">
     <div [hidden]="!allDataLoaded">
@@ -60,6 +63,7 @@
             [songType]="'streams'"
             (dataLoadedEvent)="onDataLoaded($event)"
             (songSelected)="getSongSelected($event)"
+            #streams
           ></app-song-list>
         </mat-tab>
         <mat-tab label="Cover List">
@@ -67,6 +71,7 @@
             [songType]="'covers'"
             (dataLoadedEvent)="onDataLoaded($event)"
             (songSelected)="getSongSelected($event)"
+            #covers
           ></app-song-list>
         </mat-tab>
         <mat-tab label="Suggestion List">
@@ -81,6 +86,14 @@
 </div>
 
 <footer class="footer">
-  <p class="copyright">&copy; 2024 <a href="https://twitter.com/HuaTsai2">HuaTsai</a>. All rights reserved.</p>
-  <p class="acknowledgement">Special thanks to <a href="https://twitter.com/yukiyuki_amano">天野ゆきゆき</a> for inspiring the website, and to <a href="https://twitter.com/DXEE0622">DXEE</a> for the data collection.</p>
+  <p class="copyright">
+    &copy; 2024 <a href="https://twitter.com/HuaTsai2">HuaTsai</a>. All rights
+    reserved.
+  </p>
+  <p class="acknowledgement">
+    Special thanks to
+    <a href="https://twitter.com/yukiyuki_amano">天野ゆきゆき</a> for inspiring
+    the website, and to <a href="https://twitter.com/DXEE0622">DXEE</a> for the
+    data collection.
+  </p>
 </footer>

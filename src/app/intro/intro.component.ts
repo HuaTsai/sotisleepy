@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {
   FaIconComponent,
   FontAwesomeModule,
@@ -19,6 +19,10 @@ export class IntroComponent implements OnInit {
 
   subsCountK = '0.00k';
   subsCount = '0';
+
+  @Input() streamsCount = 0;
+  @Input() streamsNonDuplicateCount = 0;
+  @Input() coversCount = 0;
 
   constructor(private youtubeService: YoutubeService) {}
 

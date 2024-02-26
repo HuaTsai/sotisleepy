@@ -4,8 +4,8 @@
   <span class="intro-item">Myo Sotis 繆・索緹絲</span>
   <span class="spacer"></span>
   <span class="intro-item" [matTooltip]="subsCount">{{subsCountK}} 訂閱</span>
-  <span class="intro-item">1000 曲</span>
-  <span class="intro-item">23 翻唱</span>
+  <span class="intro-item" [matTooltip]="streamsNonDuplicateCount.toString() + ' 非重複'">{{streamsCount}} 曲目</span>
+  <span class="intro-item">{{coversCount}} 翻唱</span>
 </div>
 
 <br />
@@ -68,15 +68,11 @@
   <!-- nkshoujo.cyberstream.ch/sotis -->
 </div>
 
-<br />
-<button mat-raised-button color="primary" >API Test</button>
-<br />
 <div class="description">
   <p>
     性別：女， 年齡：14， 身高：148， 體重：38， 生日：10/16， 職業：轉世勇者，
     喜好：宅文化、喝牛奶， 不擅長：社交、現充
   </p>
-  <p>↓ 以下有點尷尬，請小心閱讀 ↓</p>
   <p>
     隸屬於某一個王國的，代代輪迴轉世的勇者。
     每一代死後，都會被王族流傳的魔法預言書所召喚回世，繼續守護國家的安危。
