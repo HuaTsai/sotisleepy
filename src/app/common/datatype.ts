@@ -5,7 +5,9 @@ export interface StreamSong {
   youtube_url: string;
   start_time: string;
   end_time: string;
-  duration: number;
+  song_id: number;
+  status: string;
+  tags: string;
 }
 
 export interface CoverSong {
@@ -14,7 +16,7 @@ export interface CoverSong {
   date: Date;
   youtube_url: string;
   duration: string;
-  song: number;
+  song_id: number;
 }
 
 export interface Song {
@@ -33,5 +35,6 @@ export interface RenderSong {
   youtube_url: string;
   duration: number;
   start_time: number;
+  tags: string;
 }
 
