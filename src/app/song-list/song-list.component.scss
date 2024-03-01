@@ -35,7 +35,9 @@ tr:not(.thead):hover {
   cursor: pointer;
 }
 
-.tag {
-  font-size: 11px;
+mat-chip {
+  height: 18px;
+  margin: 0 2px;
+  --mdc-chip-label-text-size: 10px;
 }
 

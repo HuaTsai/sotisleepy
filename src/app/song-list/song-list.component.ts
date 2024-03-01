@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 import { MinutesSecondsPipe } from '../common/minutes-seconds.pipe';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatChipsModule } from '@angular/material/chips';
 
 @Component({
   selector: 'app-song-list',
@@ -25,6 +26,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatButtonModule,
     MatIconModule,
     MinutesSecondsPipe,
+    MatChipsModule
   ],
   templateUrl: './song-list.component.html',
   styleUrl: './song-list.component.scss',

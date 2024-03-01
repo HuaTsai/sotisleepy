@@ -17,7 +17,12 @@
         <div class="icon_name">
           <img src="assets/icon.jpg" />
           <span>{{row.name}}&nbsp;</span>
-          <span class="tag">{{row.tags}}</span>
+          @if (row.tags.length) {
+            @for (tag of row.tags.split(','); track tag) {
+              <mat-chip>{{tag}}</mat-chip>
+              <span>&nbsp;</span>
+            }
+          }
         </div>
       </td>
     </ng-container>
