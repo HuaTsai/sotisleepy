@@ -5,12 +5,27 @@
     <span>Myo Sotis</span>
     <span class="spacer"></span>
     <!-- TODO: may replace with a tag -->
-    <button mat-icon-button>
-      <fa-icon [icon]="['fas', 'heart']"></fa-icon>
-    </button>
-    <button mat-icon-button>
+    <a
+      href="https://www.youtube.com/@sotisleepy?sub_confirmation=1"
+      target="_blank"
+      class="heart-icon"
+    >
+      <button mat-icon-button>
+        <fa-icon [icon]="['fas', 'heart']"></fa-icon>
+      </button>
+    </a>
+    <button
+      mat-icon-button
+      cdkCopyToClipboard="https://singing.sotisleepy.me/"
+      (mouseenter)="$event.stopImmediatePropagation()"
+      (mouseleave)="$event.stopImmediatePropagation()"
+      (click)="copyLink()"
+      matTooltip="Link Copied!"
+      #sharetooltip="matTooltip"
+    >
       <fa-icon [icon]="['fas', 'share-nodes']"></fa-icon>
     </button>
+
     <button mat-icon-button>
       <fa-icon [icon]="['fas', 'bug']"></fa-icon>
     </button>

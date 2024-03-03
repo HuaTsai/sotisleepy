@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { SongListComponent } from '../song-list/song-list.component';
 import { RenderSong } from '../common/datatype';
 import { IntroComponent } from '../intro/intro.component';
@@ -13,6 +13,8 @@ import { SafePipe } from '../common/safe.pipe';
 import { MediaDirective } from '../common/media.directive';
 import { CommonModule } from '@angular/common';
 import { YoutubeService } from '../services/youtube.service';
+import { ClipboardModule } from '@angular/cdk/clipboard';
+import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-container',
@@ -27,12 +29,15 @@ import { YoutubeService } from '../services/youtube.service';
     IntroComponent,
     SafePipe,
     MediaDirective,
+    ClipboardModule,
+    MatTooltipModule,
   ],
   templateUrl: './container.component.html',
   styleUrl: './container.component.scss',
 })
 export class ContainerComponent implements OnInit {
-  videoId = 'https://www.youtube-nocookie.com/embed/ya5lC2iYqgE';
+  // videoId = 'https://www.youtube-nocookie.com/embed/ya5lC2iYqgE';
+  videoId = 'https://www.youtube-nocookie.com/embed/';
   videoShort = 'https://www.youtube.com/embed/Bg1dwt79iG8';
 
   dataLoadedCount = 0;
@@ -84,5 +89,11 @@ export class ContainerComponent implements OnInit {
 
   getSongSelected(song: RenderSong) {
     this.videoId = this.toEmbedUrl(song);
+  }
+
+  @ViewChild('sharetooltip') tooltip!: MatTooltip;
+  copyLink() {
+    this.tooltip.show();
+    setTimeout(() => this.tooltip.hide(2000));
   }
 }
