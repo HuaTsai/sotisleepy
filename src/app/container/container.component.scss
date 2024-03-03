@@ -23,6 +23,21 @@
     width: 100%;
   }
 
+  .header {
+    width: 100%;
+    position: fixed;
+  }
+
+  .mobile {
+    width: 96%;
+    top: 60px;
+    position: fixed;
+  }
+
+  .placeholder {
+    height: 285px;
+  }
+
   .flex-right {
     width: 100%;
   }

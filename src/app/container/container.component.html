@@ -23,7 +23,7 @@
     <!-- short 315 x 560, 1.2x 378 x 672 -->
 
     <!-- Desktop -->
-    <div *appMedia="'(min-width: 768px)'">
+    <div *appMedia="'(min-width: 768px)'" class="desktop">
       <iframe
         id="player"
         width="640"
@@ -37,7 +37,7 @@
     </div>
 
     <!-- Mobile -->
-    <div *appMedia="'(max-width: 767px)'">
+    <div *appMedia="'(max-width: 767px)'" class="mobile">
       <iframe
         id="player"
         width="100%"
@@ -49,6 +49,8 @@
         allowfullscreen
       ></iframe>
     </div>
+
+    <div *appMedia="'(max-width: 767px)'" class="placeholder"></div>
 
     <app-intro
       [streamsCount]="streams.dataSource.data.length"

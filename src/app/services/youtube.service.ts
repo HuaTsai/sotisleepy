@@ -15,4 +15,9 @@ export class YoutubeService {
     shareReplay(1),
     retryWhen(errors => errors.pipe(delay(1000), take(3)))
   );
+
+  getLatestUrl$ = this.http.get<string>(this.apiUrl + '/latesturl').pipe(
+    shareReplay(1),
+    retryWhen(errors => errors.pipe(delay(1000), take(3)))
+  );
 }

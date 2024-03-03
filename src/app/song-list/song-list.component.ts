@@ -32,7 +32,7 @@ import { MatChipsModule } from '@angular/material/chips';
   styleUrl: './song-list.component.scss',
 })
 export class SongListComponent implements AfterViewInit {
-  displayedColumns: string[] = ['name', 'date', 'duration'];
+  displayedColumns: string[] = ['name', 'date', 'duration'];  // TODO: add artist
   dataSource = new MatTableDataSource<RenderSong>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -75,11 +75,12 @@ export class SongListComponent implements AfterViewInit {
       renderSong.push({
         id: song[i].id,
         name: song[i].name,
+        tags: '',
+        artist: '',  // TODO: add artist to cover song
         date: song[i].date,
         youtube_url: song[i].youtube_url,
         duration: this.convertStringToSeconds(song[i].duration),
         start_time: 0,
-        tags: ''
       });
     }
     return renderSong;
@@ -93,11 +94,12 @@ export class SongListComponent implements AfterViewInit {
       renderSong.push({
         id: song[i].id,
         name: song[i].name,
+        tags: song[i].tags,
+        artist: '',  // TODO: add artist to stream song
         date: song[i].date,
         youtube_url: song[i].youtube_url,
         duration: end_time - start_time,
         start_time: start_time,
-        tags: song[i].tags
       });
     }
     return renderSong;

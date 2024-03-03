@@ -31,10 +31,11 @@ export interface Song {
 export interface RenderSong {
   id: number;
   name: string;
+  tags: string;
+  artist: string;
   date: Date;
   youtube_url: string;
   duration: number;
   start_time: number;
-  tags: string;
 }
 
