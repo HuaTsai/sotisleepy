@@ -37,5 +37,6 @@ export interface RenderSong {
   youtube_url: string;
   duration: number;
   start_time: number;
+  song_id: number;
 }
 

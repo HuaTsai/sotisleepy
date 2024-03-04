@@ -41,8 +41,8 @@
     <div *appMedia="'(min-width: 768px)'" class="desktop">
       <iframe
         id="player"
-        width="640"
-        height="360"
+        width="100%"
+        height="470"
         [src]="videoId | safe: 'resourceUrl'"
         title="Youtube Player"
         frameborder="0"
@@ -74,7 +74,7 @@
   </div>
   <div class="flex-right">
     <div [hidden]="!allDataLoaded">
-      <mat-tab-group>
+      <mat-tab-group (selectedTabChange)="onTabChange($event)" mat-stretch-tabs="false">
         <mat-tab label="Song List">
           <app-song-list
             [songType]="'streams'"
@@ -90,6 +90,9 @@
             (songSelected)="getSongSelected($event)"
             #covers
           ></app-song-list>
+        </mat-tab>
+        <mat-tab label="Lyrics" [disabled]="songId == 0" class="lyrics-container">
+          <pre class="lyrics">{{lyrics}}</pre>
         </mat-tab>
         <mat-tab label="Suggestion List">
           <p>Sotis Suggestions</p>

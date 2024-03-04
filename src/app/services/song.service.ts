@@ -26,4 +26,11 @@ export class SongService {
     shareReplay(1),
     retryWhen(errors => errors.pipe(delay(1000), take(3)))
   );
+
+  getLyrics(id: number): Observable<string> {
+    return this.http.get<string>(this.apiUrl + '/lyrics/' + id.toString() + '/').pipe(
+      shareReplay(1),
+      retryWhen(errors => errors.pipe(delay(1000), take(3)))
+    );
+  }
 }

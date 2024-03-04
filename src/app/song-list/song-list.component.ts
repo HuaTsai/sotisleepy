@@ -81,6 +81,7 @@ export class SongListComponent implements AfterViewInit {
         youtube_url: song[i].youtube_url,
         duration: this.convertStringToSeconds(song[i].duration),
         start_time: 0,
+        song_id: song[i].song_id,
       });
     }
     return renderSong;
@@ -100,6 +101,7 @@ export class SongListComponent implements AfterViewInit {
         youtube_url: song[i].youtube_url,
         duration: end_time - start_time,
         start_time: start_time,
+        song_id: song[i].song_id,
       });
     }
     return renderSong;
