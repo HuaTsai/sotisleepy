@@ -91,7 +91,7 @@
             #covers
           ></app-song-list>
         </mat-tab>
-        <mat-tab label="Lyrics" [disabled]="songId == 0" class="lyrics-container">
+        <mat-tab label="Lyrics" [disabled]="songId <= 1" class="lyrics-container">
           <pre class="lyrics">{{lyrics}}</pre>
         </mat-tab>
         <mat-tab label="Suggestion List">

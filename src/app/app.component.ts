@@ -18,8 +18,9 @@ import {
   faBug,
   faHeart,
   faShareNodes,
+  faArrowUpRightFromSquare,
+  faUserGroup,
 } from '@fortawesome/free-solid-svg-icons';
-// import { faBug, faHeart, faShareNodes } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -40,6 +41,8 @@ export class AppComponent {
     library.addIcons(faBug);
     library.addIcons(faHeart);
     library.addIcons(faShareNodes);
+    library.addIcons(faArrowUpRightFromSquare);
+    library.addIcons(faUserGroup);
 
     // Brand icons
     library.addIcons(faYoutube);

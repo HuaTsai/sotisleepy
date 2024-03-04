@@ -3,14 +3,20 @@
 <div class="intro">
   <span class="intro-item">Myo Sotis 繆・索緹絲</span>
   <span class="spacer"></span>
-  <span class="intro-item" [matTooltip]="subsCount">{{subsCountK}} 訂閱</span>
-  <span class="intro-item" [matTooltip]="streamsNonDuplicateCount.toString() + ' 非重複'">{{streamsCount}} 曲目</span>
-  <span class="intro-item">{{coversCount}} 翻唱</span>
+  <span class="intro-item" [matTooltip]="subsCount">{{ subsCountK }} 訂閱</span>
+  <span
+    class="intro-item"
+    [matTooltip]="streamsNonDuplicateCount.toString() + ' 非重複'"
+    >{{ streamsCount }} 曲目</span
+  >
+  <span class="intro-item">{{ coversCount }} 翻唱</span>
 </div>
 
 <br />
 
 <div class="links">
+  <fa-icon size="3x" [icon]="['fas', 'arrow-up-right-from-square']"></fa-icon>
+  <fa-icon size="3x" [icon]="['fas', 'user-group']"></fa-icon>
   <a href="https://www.youtube.com/@sotisleepy" target="_blank">
     <fa-icon
       [icon]="['fab', 'youtube']"
@@ -70,17 +76,17 @@
 
 <div class="description">
   <p>
-    性別：女， 年齡：14， 身高：148， 體重：38， 生日：10/16， 職業：轉世勇者，
-    喜好：宅文化、喝牛奶， 不擅長：社交、現充
+    性別：女，年齡：14，身高：148，體重：38，生日：10/16<br>
+    職業：轉世勇者，喜好：宅文化、喝牛奶，不擅長：社交、現充
   </p>
   <p>
-    隸屬於某一個王國的，代代輪迴轉世的勇者。
-    每一代死後，都會被王族流傳的魔法預言書所召喚回世，繼續守護國家的安危。
-    天生就擁有過人的身體素質與戰鬥天賦，並且可在學習後精通所有類型的冷兵器。
-    同時擁有一把由王國所打造，唯有歷代勇者們才能使用的巨大寶劍。
-    身為最新一次轉世而來的勇者，自幼就受到周遭人們強烈的期待。
-    而過度的關照導致她性格漸漸封閉，轉而對勇者應盡的職責提不起幹勁。
-    不喜歡接受訓練也不想上戰場的她，最終成為了一名廢人般的家裡蹲。
+    隸屬於某一個王國的，代代輪迴轉世的勇者。<br>
+    每一代死後，都會被王族流傳的魔法預言書所召喚回世，繼續守護國家的安危。<br>
+    天生就擁有過人的身體素質與戰鬥天賦，並且可在學習後精通所有類型的冷兵器。<br>
+    同時擁有一把由王國所打造，唯有歷代勇者們才能使用的巨大寶劍。<br>
+    身為最新一次轉世而來的勇者，自幼就受到周遭人們強烈的期待。<br>
+    而過度的關照導致她性格漸漸封閉，轉而對勇者應盡的職責提不起幹勁。<br>
+    不喜歡接受訓練也不想上戰場的她，最終成為了一名廢人般的家裡蹲。<br>
     性格內向、怕生，沒有幹勁，與不熟悉的人說話時會有點溝通障礙。
   </p>
 </div>
