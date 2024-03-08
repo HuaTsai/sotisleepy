@@ -5,17 +5,30 @@
 .flex-container {
   display: flex;
   padding: 8px 8px;
+  justify-content: space-between;
   flex-wrap: wrap;
 }
 
 .flex-left {
-  flex: 4;
+  flex: 0 0 49.5%;
 }
 
 .flex-right {
-  flex: 5;
-  // flex-grow: 2;
-  padding-left: 8px;
+  flex: 0 0 50%;
+}
+
+.desktop {
+  position: relative;
+  padding-bottom: 56.25%;
+  // overflow: hidden;
+}
+
+.desktop iframe {
+  position: absolute;
+  top: 0;
+  left:0;
+  width: 100%;
+  height: 100%;
 }
 
 @media only screen and (max-width: 767px) {
