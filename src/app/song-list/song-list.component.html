@@ -44,7 +44,7 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns" class="thead"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectSong(row)"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectSong(row)" [id]="row.song_id"></tr>
 
     <tr class="mat-row" *matNoDataRow>
       <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
