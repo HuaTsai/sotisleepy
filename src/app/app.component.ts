@@ -18,6 +18,7 @@ import {
   faBug,
   faHeart,
   faShareNodes,
+  faArrowTrendUp,
   faArrowUpRightFromSquare,
   faUserGroup,
 } from '@fortawesome/free-solid-svg-icons';
@@ -41,6 +42,7 @@ export class AppComponent {
     library.addIcons(faBug);
     library.addIcons(faHeart);
     library.addIcons(faShareNodes);
+    library.addIcons(faArrowTrendUp);
     library.addIcons(faArrowUpRightFromSquare);
     library.addIcons(faUserGroup);
 

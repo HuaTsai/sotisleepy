@@ -1,4 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
 
+@font-face {
+  font-family: 'SourceHanSans';
+  src: url('assets/SourceHanSansHWTC-VF.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+
+mat-form-field label {
+  font-family: SourceHanSans !important;
+}
+
+.mat-mdc-tab, .mat-mdc-form-field, .mat-mdc-cell, .mat-mdc-header-cell {
+  font-family: SourceHanSans !important;
+}
+
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: SourceHanSans }
