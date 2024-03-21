@@ -73,7 +73,7 @@
   <div class="flex-right">
     <div [hidden]="!allDataLoaded">
       <mat-tab-group (selectedTabChange)="onTabChange($event)" mat-stretch-tabs="false">
-        <mat-tab label="Song List">
+        <mat-tab label="直播歌單">
           <app-song-list
             [songType]="'streams'"
             (dataLoadedEvent)="onDataLoaded($event)"
@@ -81,7 +81,7 @@
             #streams
           ></app-song-list>
         </mat-tab>
-        <mat-tab label="Cover List">
+        <mat-tab label="翻唱歌單">
           <app-song-list
             [songType]="'covers'"
             (dataLoadedEvent)="onDataLoaded($event)"
@@ -89,16 +89,24 @@
             #covers
           ></app-song-list>
         </mat-tab>
-        <mat-tab label="Lyrics" [disabled]="songId <= 1" class="lyrics-container">
+        <mat-tab label="會限歌單">
+          <app-song-list
+            [songType]="'members'"
+            (dataLoadedEvent)="onDataLoaded($event)"
+            (songSelected)="getSongSelected($event, false)"
+            #members
+          ></app-song-list>
+        </mat-tab>
+        <mat-tab label="歌詞" [disabled]="songId <= 1" class="lyrics-container">
           <pre class="lyrics">{{lyrics}}</pre>
         </mat-tab>
-        <mat-tab label="Gallery">
+        <mat-tab label="畫廊">
           <p>Stream/Cover Images</p>
         </mat-tab>
-        <mat-tab label="Suggestion List">
+        <mat-tab label="推薦歌單">
           <p>Sotis Suggestions</p>
         </mat-tab>
-        <mat-tab label="Soraru List">
+        <mat-tab label="そらる歌單">
           <p>Secret: seldom appears</p>
         </mat-tab>
       </mat-tab-group>

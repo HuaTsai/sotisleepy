@@ -1,4 +1,10 @@
-import { Component, Output, EventEmitter, Input, SimpleChange } from '@angular/core';
+import {
+  Component,
+  Output,
+  EventEmitter,
+  Input,
+  SimpleChange,
+} from '@angular/core';
 import { AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
@@ -26,13 +32,13 @@ import { MatChipsModule } from '@angular/material/chips';
     MatButtonModule,
     MatIconModule,
     MinutesSecondsPipe,
-    MatChipsModule
+    MatChipsModule,
   ],
   templateUrl: './song-list.component.html',
   styleUrl: './song-list.component.scss',
 })
 export class SongListComponent implements AfterViewInit {
-  displayedColumns: string[] = ['name', 'date', 'duration'];  // TODO: add artist
+  displayedColumns: string[] = ['name', 'date', 'duration']; // TODO: add artist
   dataSource = new MatTableDataSource<RenderSong>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -44,24 +50,29 @@ export class SongListComponent implements AfterViewInit {
 
   ngOnChanges(changes: SimpleChange) {
     if (this.songType === 'covers') {
-      this.songService.covers$.subscribe(covers => {
+      this.songService.covers$.subscribe((covers) => {
         this.dataSource.data = this.convertCoverSongToRenderSong(covers);
         this.dataLoadedEvent.emit(true);
       });
     } else if (this.songType === 'streams') {
-      this.songService.streams$.subscribe(streams => {
-        this.dataSource.data = this.convertStreamSongToRenderSong(streams);
+      this.songService.publics.subscribe((publics) => {
+        this.dataSource.data = this.convertStreamSongToRenderSong(publics);
+        this.dataLoadedEvent.emit(true);
+      });
+    } else if (this.songType === 'members') {
+      this.songService.members$.subscribe((members) => {
+        this.dataSource.data = this.convertStreamSongToRenderSong(members);
         this.dataLoadedEvent.emit(true);
       });
     }
   }
 
   convertStringToSeconds(time: string): number {
-    const parts = time.split(':').map(part => +part);
+    const parts = time.split(':').map((part) => +part);
     if (parts.length === 3) {
-      return (parts[0] * 3600) + (parts[1] * 60) + parts[2];
+      return parts[0] * 3600 + parts[1] * 60 + parts[2];
     } else if (parts.length === 2) {
-      return (parts[0] * 60) + parts[1];
+      return parts[0] * 60 + parts[1];
     } else if (parts.length === 1) {
       return parts[0];
     } else {
@@ -76,7 +87,7 @@ export class SongListComponent implements AfterViewInit {
         id: song[i].id,
         name: song[i].name,
         tags: '',
-        artist: '',  // TODO: add artist to cover song
+        artist: '', // TODO: add artist to cover song
         date: song[i].date,
         youtube_url: song[i].youtube_url,
         duration: this.convertStringToSeconds(song[i].duration),
@@ -96,7 +107,7 @@ export class SongListComponent implements AfterViewInit {
         id: song[i].id,
         name: song[i].name,
         tags: song[i].tags,
-        artist: '',  // TODO: add artist to stream song
+        artist: '', // TODO: add artist to stream song
         date: song[i].date,
         youtube_url: song[i].youtube_url,
         duration: end_time - start_time,
@@ -105,6 +116,16 @@ export class SongListComponent implements AfterViewInit {
       });
     }
     return renderSong;
+  }
+
+  toExternalUrl(song: RenderSong): string {
+    return (
+      'https://www.youtube.com/watch?v=' +
+      song.youtube_url +
+      '&t=' +
+      '&start=' +
+      song.start_time
+    );
   }
 
   ngAfterViewInit() {
@@ -125,5 +146,8 @@ export class SongListComponent implements AfterViewInit {
   @Output() songSelected = new EventEmitter<RenderSong>();
   selectSong(song: RenderSong) {
     this.songSelected.emit(song);
+    if (this.songType === 'members') {
+      window.open(this.toExternalUrl(song), "_blank");
+    }
   }
 }

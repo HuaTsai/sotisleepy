@@ -22,7 +22,12 @@ export class SongService {
     retryWhen(errors => errors.pipe(delay(1000), take(3)))
   );
 
-  streams$ = this.http.get<StreamSong[]>(this.apiUrl + '/streams/').pipe(
+  publics = this.http.get<StreamSong[]>(this.apiUrl + '/streams/public/').pipe(
+    shareReplay(1),
+    retryWhen(errors => errors.pipe(delay(1000), take(3)))
+  );
+
+  members$ = this.http.get<StreamSong[]>(this.apiUrl + '/streams/member/').pipe(
     shareReplay(1),
     retryWhen(errors => errors.pipe(delay(1000), take(3)))
   );

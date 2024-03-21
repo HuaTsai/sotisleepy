@@ -94,8 +94,10 @@ export class ContainerComponent implements OnInit {
     );
   }
 
-  getSongSelected(song: RenderSong) {
-    this.videoId = this.toEmbedUrl(song);
+  getSongSelected(song: RenderSong, ispublic = true) {
+    if (ispublic) {
+      this.videoId = this.toEmbedUrl(song);
+    }
     this.songId = song.song_id;
   }
 
@@ -107,7 +109,7 @@ export class ContainerComponent implements OnInit {
 
   // TODO: Everytime the tab is changed, the lyrics are fetched again
   onTabChange(event: MatTabChangeEvent) {
-    if (event.tab.textLabel === 'Lyrics') {
+    if (event.tab.textLabel === '歌詞') {
       this.songService
         .getLyrics(this.songId)
         .subscribe((data) => (this.lyrics = data));
