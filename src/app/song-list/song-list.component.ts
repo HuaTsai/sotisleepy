@@ -18,6 +18,7 @@ import { MinutesSecondsPipe } from '../common/minutes-seconds.pipe';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatChipsModule } from '@angular/material/chips';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
   selector: 'app-song-list',
@@ -33,6 +34,7 @@ import { MatChipsModule } from '@angular/material/chips';
     MatIconModule,
     MinutesSecondsPipe,
     MatChipsModule,
+    FontAwesomeModule,
   ],
   templateUrl: './song-list.component.html',
   styleUrl: './song-list.component.scss',
@@ -55,7 +57,7 @@ export class SongListComponent implements AfterViewInit {
         this.dataLoadedEvent.emit(true);
       });
     } else if (this.songType === 'streams') {
-      this.songService.publics.subscribe((publics) => {
+      this.songService.publics$.subscribe((publics) => {
         this.dataSource.data = this.convertStreamSongToRenderSong(publics);
         this.dataLoadedEvent.emit(true);
       });
@@ -86,7 +88,7 @@ export class SongListComponent implements AfterViewInit {
       renderSong.push({
         id: song[i].id,
         name: song[i].name,
-        tags: '',
+        tags: song[i].tags,
         artist: '', // TODO: add artist to cover song
         date: song[i].date,
         youtube_url: song[i].youtube_url,

@@ -17,6 +17,7 @@ export interface CoverSong {
   youtube_url: string;
   duration: string;
   song_id: number;
+  tags: string;
 }
 
 export interface Song {
