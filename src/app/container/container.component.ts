@@ -107,7 +107,6 @@ export class ContainerComponent implements OnInit {
     setTimeout(() => this.tooltip.hide(2000));
   }
 
-  // TODO: Everytime the tab is changed, the lyrics are fetched again
   onTabChange(event: MatTabChangeEvent) {
     if (event.tab.textLabel === '歌詞') {
       this.songService

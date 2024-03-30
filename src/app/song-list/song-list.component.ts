@@ -40,7 +40,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   styleUrl: './song-list.component.scss',
 })
 export class SongListComponent implements AfterViewInit {
-  displayedColumns: string[] = ['name', 'date', 'duration']; // TODO: add artist
+  displayedColumns: string[] = ['name', 'artist', 'date', 'duration'];
   dataSource = new MatTableDataSource<RenderSong>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -89,7 +89,7 @@ export class SongListComponent implements AfterViewInit {
         id: song[i].id,
         name: song[i].name,
         tags: song[i].tags,
-        artist: '', // TODO: add artist to cover song
+        artist: song[i].artist,
         date: song[i].date,
         youtube_url: song[i].youtube_url,
         duration: this.convertStringToSeconds(song[i].duration),
@@ -109,7 +109,7 @@ export class SongListComponent implements AfterViewInit {
         id: song[i].id,
         name: song[i].name,
         tags: song[i].tags,
-        artist: '', // TODO: add artist to stream song
+        artist: song[i].artist,
         date: song[i].date,
         youtube_url: song[i].youtube_url,
         duration: end_time - start_time,

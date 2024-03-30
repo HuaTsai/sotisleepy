@@ -35,6 +35,18 @@ tr:not(.thead):hover {
   cursor: pointer;
 }
 
+.mat-column-artist {
+  width: 28%;
+}
+
+.mat-column-date {
+  width: 15%;
+}
+
+.mat-column-duration {
+  width: 10%;
+}
+
 mat-chip {
   height: 18px;
   margin: 0 2px;

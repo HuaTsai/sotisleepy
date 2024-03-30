@@ -12,11 +12,6 @@ export class SongService {
 
   constructor(private http: HttpClient) {}
 
-  songs$ = this.http.get<StreamSong[]>(this.apiUrl + '/songs/').pipe(
-    shareReplay(1),
-    retryWhen(errors => errors.pipe(delay(1000), take(3)))
-  );
-
   covers$ = this.http.get<CoverSong[]>(this.apiUrl + '/covers/').pipe(
     shareReplay(1),
     retryWhen(errors => errors.pipe(delay(1000), take(3)))

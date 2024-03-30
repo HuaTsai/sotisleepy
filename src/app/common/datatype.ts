@@ -1,6 +1,7 @@
 export interface StreamSong {
   id: number;
   name: string;
+  artist: string;
   date: Date;
   youtube_url: string;
   start_time: string;
@@ -13,6 +14,7 @@ export interface StreamSong {
 export interface CoverSong {
   id: number,
   name: string;
+  artist: string;
   date: Date;
   youtube_url: string;
   duration: string;
