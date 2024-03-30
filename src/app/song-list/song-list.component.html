@@ -14,19 +14,31 @@
 
     <!-- XXX: a lot of song_id for GA4 -->
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>曲目</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        曲目
+        @if (songType === 'members') {
+          <span>&nbsp;</span>
+          <fa-icon [icon]="['fas', 'arrow-up-right-from-square']"></fa-icon>
+        }
+      </th>
       <td mat-cell *matCellDef="let row" [id]="row.song_id">
         <div class="icon_name" [id]="row.song_id">
           <img src="assets/icon.jpg" [id]="row.song_id"/>
           <span [id]="row.song_id">{{row.name}}&nbsp;</span>
           @if (row.tags.length) {
-            @for (tag of row.tags.split(','); track tag) {
-              @if (tag === '外部') {
-                <fa-icon [icon]="['fas', 'arrow-trend-up']"></fa-icon>
-              } @else {
-                <mat-chip [id]="row.song_id">{{tag}}</mat-chip>
-              }
+            @if (row.tags.includes('連動')) {
+              <fa-icon [icon]="['fas', 'user-group']"></fa-icon>
               <span [id]="row.song_id">&nbsp;</span>
+            }
+            @if (row.tags.includes('外部')) {
+              <fa-icon [icon]="['fas', 'arrow-trend-up']"></fa-icon>
+              <span [id]="row.song_id">&nbsp;</span>
+            }
+            @for (tag of row.tags.split(','); track tag) {
+              @if (tag !== '外部' && tag !== '連動') {
+                <mat-chip [id]="row.song_id">{{tag}}</mat-chip>
+                <span [id]="row.song_id">&nbsp;</span>
+              }
             }
           }
         </div>
