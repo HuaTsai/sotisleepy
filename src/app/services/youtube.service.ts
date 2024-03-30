@@ -11,12 +11,12 @@ export class YoutubeService {
 
   constructor(private http: HttpClient) {}
 
-  getSubsCount$ = this.http.get<number>(this.apiUrl + '/subscount').pipe(
+  getSubsCount$ = this.http.get<number>(this.apiUrl + '/subscount/').pipe(
     shareReplay(1),
     retryWhen(errors => errors.pipe(delay(1000), take(3)))
   );
 
-  getLatestUrl$ = this.http.get<string>(this.apiUrl + '/latesturl').pipe(
+  getLatestUrl$ = this.http.get<string>(this.apiUrl + '/latesturl/').pipe(
     shareReplay(1),
     retryWhen(errors => errors.pipe(delay(1000), take(3)))
   );
