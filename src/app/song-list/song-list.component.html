@@ -34,8 +34,12 @@
               <fa-icon [icon]="['fas', 'arrow-trend-up']"></fa-icon>
               <span [id]="row.song_id">&nbsp;</span>
             }
+            @if (row.tags.includes('吉他')) {
+              <fa-icon [icon]="['fas', 'guitar']"></fa-icon>
+              <span [id]="row.song_id">&nbsp;</span>
+            }
             @for (tag of row.tags.split(','); track tag) {
-              @if (tag !== '外部' && tag !== '連動') {
+              @if (tag !== '外部' && tag !== '連動' && tag !== '吉他') {
                 <mat-chip [id]="row.song_id">{{tag}}</mat-chip>
                 <span [id]="row.song_id">&nbsp;</span>
               }
@@ -63,8 +67,8 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns" class="thead"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectSong(row)" [id]="row.song_id"></tr>
 
-    <tr class="mat-row" *matNoDataRow>
-      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    <tr *matNoDataRow>
+      <td class="mat-no-data" colspan="4">未找到關鍵字︰{{input.value}}</td>
     </tr>
   </table>
 

@@ -21,6 +21,8 @@ import {
   faArrowTrendUp,
   faArrowUpRightFromSquare,
   faUserGroup,
+  faGuitar,
+  faLightbulb,
 } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -45,6 +47,8 @@ export class AppComponent {
     library.addIcons(faArrowTrendUp);
     library.addIcons(faArrowUpRightFromSquare);
     library.addIcons(faUserGroup);
+    library.addIcons(faGuitar);
+    library.addIcons(faLightbulb);
 
     // Brand icons
     library.addIcons(faYoutube);
