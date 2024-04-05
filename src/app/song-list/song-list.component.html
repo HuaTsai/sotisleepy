@@ -63,11 +63,7 @@
     <ng-container matColumnDef="artist">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>原唱/作者</th>
       <td mat-cell *matCellDef="let row">
-        @if (row.artist.includes("After the Rain")) {
-          After the Rain
-        } @else {
-          {{ row.artist }}
-        }
+        {{ toRenderableArtist(row.artist) }}
       </td>
     </ng-container>
 

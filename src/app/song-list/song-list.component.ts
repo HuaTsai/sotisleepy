@@ -90,6 +90,7 @@ export class SongListComponent implements AfterViewInit {
         name: song[i].name,
         tags: song[i].tags,
         artist: song[i].artist,
+        lang: song[i].lang,
         date: song[i].date,
         youtube_url: song[i].youtube_url,
         duration: this.convertStringToSeconds(song[i].duration),
@@ -110,6 +111,7 @@ export class SongListComponent implements AfterViewInit {
         name: song[i].name,
         tags: song[i].tags,
         artist: song[i].artist,
+        lang: song[i].lang,
         date: song[i].date,
         youtube_url: song[i].youtube_url,
         duration: end_time - start_time,
@@ -128,6 +130,16 @@ export class SongListComponent implements AfterViewInit {
       '&start=' +
       song.start_time
     );
+  }
+
+  toRenderableArtist(artist: string): string {
+    if (artist.includes("After the Rain")) {
+      return "After the Rain";
+    } else if (artist.includes("サザンオールスターズ")) {
+      return "サザンオールスターズ";
+    } else {
+      return artist;
+    }
   }
 
   ngAfterViewInit() {
