@@ -16,4 +16,13 @@ mat-form-field label {
 }
 
 html, body { height: 100%; }
-body { margin: 0; font-family: SourceHanSans }
+body {
+  margin: 0;
+  font-family: SourceHanSans;
+  background: url('assets/background.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  backdrop-filter: blur(8px);
+}

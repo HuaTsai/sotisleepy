@@ -1,6 +1,6 @@
 <br />
 <mat-form-field>
-  <mat-label>Filter</mat-label>
+  <mat-label>搜尋</mat-label>
   <input matInput (keyup)="applyFilter($event)" placeholder="" #input />
   @if (input.value) {
     <button
@@ -34,7 +34,7 @@
       </th>
       <td mat-cell *matCellDef="let row" [id]="row.song_id">
         <div class="icon_name" [id]="row.song_id">
-          <img src="assets/icon.jpg" [id]="row.song_id" />
+          <img src="assets/sword_logo.jpg" [id]="row.song_id" />
           <span [id]="row.song_id">{{ row.name }}&nbsp;</span>
           @if (row.tags.length) {
             @if (row.tags.includes("連動")) {

@@ -2,7 +2,7 @@
 
 <div class="header">
   <mat-toolbar color="primary">
-    <span>Myo Sotis</span>
+    <img src="assets/sotis_logo.png" height="30px" />
     <span class="spacer"></span>
     <!-- TODO: may replace with a tag -->
     <a
@@ -16,7 +16,7 @@
     </a>
     <button
       mat-icon-button
-      cdkCopyToClipboard="https://singing.sotisleepy.me/"
+      cdkCopyToClipboard="https://sing.sotisleepy.me/"
       (mouseenter)="$event.stopImmediatePropagation()"
       (mouseleave)="$event.stopImmediatePropagation()"
       (click)="copyLink()"
@@ -70,6 +70,9 @@
       [coversCount]="covers.dataSource.data.length"
     ></app-intro>
   </div>
+
+
+
   <div class="flex-right">
     <div [hidden]="!allDataLoaded">
       <mat-tab-group (selectedTabChange)="onTabChange($event)" mat-stretch-tabs="false">
@@ -99,15 +102,6 @@
         </mat-tab>
         <mat-tab label="歌詞" [disabled]="songId <= 1" class="lyrics-container">
           <pre class="lyrics">{{lyrics}}</pre>
-        </mat-tab>
-        <mat-tab label="畫廊">
-          <p>Stream/Cover Images</p>
-        </mat-tab>
-        <mat-tab label="推薦歌單">
-          <p>Sotis Suggestions</p>
-        </mat-tab>
-        <mat-tab label="そらる歌單">
-          <p>Secret: seldom appears</p>
         </mat-tab>
       </mat-tab-group>
     </div>

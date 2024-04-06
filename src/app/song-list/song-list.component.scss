@@ -1,5 +1,6 @@
 table {
   width: 100%;
+  background-color: rgba(white, 0.3);
 }
 
 .mat-mdc-form-field {
@@ -23,11 +24,11 @@ td, th {
 }
 
 tr:not(.thead):nth-child(odd) {
-  background-color: lightblue;
+  background-color: rgba(lightblue, 0.3);
 }
 
 tr:nth-child(even) {
-  background-color: #8ca5bd;
+  background-color: rgba(lightcyan, 0.3);
 }
 
 tr:not(.thead):hover {
@@ -36,15 +37,18 @@ tr:not(.thead):hover {
 }
 
 .mat-column-artist {
-  width: 32%;
+  width: 30%;
+  white-space: nowrap;
 }
 
 .mat-column-date {
-  width: 13%;
+  width: 10%;
+  white-space: nowrap;
 }
 
 .mat-column-duration {
-  width: 9%;
+  width: 5%;
+  white-space: nowrap;
 }
 
 .mat-no-data {
@@ -56,5 +60,9 @@ mat-chip {
   height: 18px;
   margin: 0 2px;
   --mdc-chip-label-text-size: 10px;
+}
+
+mat-paginator {
+  background-color: rgba(white, 0.7);
 }
 

@@ -4,6 +4,7 @@
 
 p {
   font-size: 18px;
+  color: white;
 }
 
 .intro {
@@ -17,9 +18,11 @@ p {
 
 .intro-item {
   padding: 0 6px;
+  color: white;
 }
 
 .intro span:nth-child(n+4) {
-  border-left: 2px solid #000;
+  border-left: 2px solid white;
+  color: white;
 }
 
