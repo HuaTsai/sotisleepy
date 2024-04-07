@@ -77,7 +77,7 @@ export class ContainerComponent implements OnInit {
 
   onDataLoaded(event: boolean) {
     this.dataLoadedCount++;
-    if (this.dataLoadedCount === 2) {
+    if (this.dataLoadedCount === 3) {
       this.allDataLoaded = true;
     }
   }

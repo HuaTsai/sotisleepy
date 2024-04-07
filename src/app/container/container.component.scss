@@ -58,7 +58,7 @@
 
 .footer {
   text-align: center;
-  background-color: powderblue;
+  background-color: rgba(powderblue, 0.3);
   padding: 10px 0;
 }
 
@@ -73,7 +73,7 @@
 }
 
 mat-toolbar {
-  background-color: rgba(#3f51b5, 0.8)
+  background-color: rgba(#3f51b5, 0.5)
 }
 
 a {
@@ -90,5 +90,6 @@ a {
   font-size: 20px;
   text-align: center;
   height: 700px;
+  color: white;
 }
 
