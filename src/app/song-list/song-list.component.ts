@@ -66,6 +66,11 @@ export class SongListComponent implements AfterViewInit {
         this.dataSource.data = this.convertStreamSongToRenderSong(members);
         this.dataLoadedEvent.emit(true);
       });
+    } else if (this.songType === 'unlisteds') {
+      this.songService.unlisteds$.subscribe((unlisteds) => {
+        this.dataSource.data = this.convertStreamSongToRenderSong(unlisteds);
+        this.dataLoadedEvent.emit(true);
+      });
     }
   }
 

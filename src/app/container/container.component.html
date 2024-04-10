@@ -95,6 +95,14 @@
             #members
           ></app-song-list>
         </mat-tab>
+        <mat-tab label="非公開歌單">
+          <app-song-list
+            [songType]="'unlisteds'"
+            (dataLoadedEvent)="onDataLoaded($event)"
+            (songSelected)="getSongSelected($event)"
+            #unlisted
+          ></app-song-list>
+        </mat-tab>
         <mat-tab label="歌詞" [disabled]="songId <= 1" class="lyrics-container">
           <pre class="lyrics">{{lyrics}}</pre>
           @if (originalURL.includes('youtube')) {

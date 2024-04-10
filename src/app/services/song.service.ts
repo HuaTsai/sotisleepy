@@ -27,6 +27,11 @@ export class SongService {
     retryWhen(errors => errors.pipe(delay(1000), take(3)))
   );
 
+  unlisteds$ = this.http.get<StreamSong[]>(this.apiUrl + '/streams/unlisted/').pipe(
+    shareReplay(1),
+    retryWhen(errors => errors.pipe(delay(1000), take(3)))
+  );
+
   statistic$ = this.http.get<Statistic>(this.apiUrl + '/statistic/').pipe(
     shareReplay(1),
     retryWhen(errors => errors.pipe(delay(1000), take(3)))
