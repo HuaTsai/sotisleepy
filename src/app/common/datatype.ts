@@ -37,3 +37,20 @@ export interface RenderSong {
   song_id: number;
 }
 
+export interface LyricsURL {
+  lyrics: string;
+  url: string;
+}
+
+export interface Statistic {
+  stream_count: number;
+  cover_count: number;
+  nonrepeat: {
+    all: number;
+    jp: number;
+    zh: number;
+    en: number;
+  };
+  latest_song: string;
+}
+

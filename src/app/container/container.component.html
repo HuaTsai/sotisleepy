@@ -65,10 +65,7 @@
 
     <div *appMedia="'(max-width: 767px)'" class="placeholder"></div>
 
-    <app-intro
-      [streamsCount]="streams.dataSource.data.length"
-      [coversCount]="covers.dataSource.data.length"
-    ></app-intro>
+    <app-intro></app-intro>
   </div>
 
   <div class="flex-right">
@@ -100,6 +97,19 @@
         </mat-tab>
         <mat-tab label="歌詞" [disabled]="songId <= 1" class="lyrics-container">
           <pre class="lyrics">{{lyrics}}</pre>
+          @if (originalURL.includes('youtube')) {
+            <a [href]="originalURL" target="_blank" class="original-link">
+              <fa-icon [icon]="['fab', 'youtube']" size="3x" class="yticon" ></fa-icon>
+            </a>
+          } @else if (originalURL.includes('nicovideo')) {
+            <a [href]="originalURL" target="_blank" class="original-link">
+              <img width="65px" src="assets/niconico.png" />
+            </a>
+          }
+        </mat-tab>
+        <mat-tab label="數據" disabled="True">
+        </mat-tab>
+        <mat-tab label="敬請期待！" disabled="True">
         </mat-tab>
       </mat-tab-group>
     </div>

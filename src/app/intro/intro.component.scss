@@ -1,5 +1,6 @@
 .icon {
-  color: blue;
+  color: white;
+  margin: 0 3px;
 }
 
 p {
@@ -8,8 +9,9 @@ p {
 }
 
 .intro {
-  font-size: 22px;
+  font-size: 24px;
   display: flex;
+  align-items: center;
 }
 
 .spacer {
@@ -17,12 +19,12 @@ p {
 }
 
 .intro-item {
-  padding: 0 6px;
+  padding: 0 8px;
   color: white;
 }
 
 .intro span:nth-child(n+4) {
-  border-left: 2px solid white;
+  border-left: 1.5px solid white;
   color: white;
 }
 

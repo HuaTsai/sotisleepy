@@ -6,6 +6,7 @@ import {
 import { YoutubeService } from '../services/youtube.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { SongService } from '../services/song.service';
 
 @Component({
   selector: 'app-intro',
@@ -20,11 +21,10 @@ export class IntroComponent implements OnInit {
   subsCountK = '0.00k';
   subsCount = '0';
 
-  @Input() streamsCount = 0;
-  @Input() streamsNonDuplicateCount = 0;
-  @Input() coversCount = 0;
+  streamsCount = 0;
+  coversCount = 0;
 
-  constructor(private youtubeService: YoutubeService) {}
+  constructor(private youtubeService: YoutubeService, private songService: SongService) {}
 
   ngOnInit() {
     this.youtubeService.getSubsCount$.subscribe(
@@ -33,6 +33,12 @@ export class IntroComponent implements OnInit {
         this.subsCountK = (data / 1000).toFixed(1).toString() + 'k';
       }
     );
+    this.songService.statistic$.subscribe(
+      (data) => {
+        this.streamsCount = data.stream_count;
+        this.coversCount = data.cover_count;
+      }
+    )
   }
 
   onMouseEnter(icon: string) {

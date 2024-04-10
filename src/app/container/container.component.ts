@@ -41,6 +41,7 @@ export class ContainerComponent implements OnInit {
   videoId = 'https://www.youtube-nocookie.com/embed/';
   songId = 0;
   lyrics = '';
+  originalURL = '';
   videoShort = 'https://www.youtube.com/embed/Bg1dwt79iG8';
 
   dataLoadedCount = 0;
@@ -109,9 +110,10 @@ export class ContainerComponent implements OnInit {
 
   onTabChange(event: MatTabChangeEvent) {
     if (event.tab.textLabel === '歌詞') {
-      this.songService
-        .getLyrics(this.songId)
-        .subscribe((data) => (this.lyrics = data));
+      this.songService.getLyrics(this.songId).subscribe((data) => {
+        this.lyrics = data.lyrics;
+        this.originalURL = data.url;
+      });
     }
   }
 }

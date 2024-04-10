@@ -1,81 +1,74 @@
 <br />
 
 <div class="intro">
-  <span class="intro-item">Myo Sotis 繆・索緹絲</span>
+  <div class="links">
+    <a href="https://www.youtube.com/@sotisleepy" target="_blank">
+      <fa-icon
+        [icon]="['fab', 'youtube']"
+        size="2x"
+        class="icon"
+        [animation]="animatedIcon === 'youtube' ? 'beat' : undefined"
+        (mouseenter)="onMouseEnter('youtube')"
+        (mouseleave)="onMouseLeave()"
+      ></fa-icon>
+    </a>
+
+    <a href="https://twitter.com/sotisleepy" target="_blank">
+      <fa-icon
+        [icon]="['fab', 'twitter']"
+        size="2x"
+        class="icon"
+        [animation]="animatedIcon === 'twitter' ? 'bounce' : undefined"
+        (mouseenter)="onMouseEnter('twitter')"
+        (mouseleave)="onMouseLeave()"
+      ></fa-icon>
+    </a>
+
+    <a href="https://www.instagram.com/sotisleepy" target="_blank">
+      <fa-icon
+        [icon]="['fab', 'instagram']"
+        size="2x"
+        class="icon"
+        [animation]="animatedIcon === 'instagram' ? 'shake' : undefined"
+        (mouseenter)="onMouseEnter('instagram')"
+        (mouseleave)="onMouseLeave()"
+      ></fa-icon>
+    </a>
+
+    <a
+      href="https://www.facebook.com/profile.php?id=100083727110341"
+      target="_blank"
+    >
+      <fa-icon
+        [icon]="['fab', 'facebook']"
+        size="2x"
+        class="icon"
+        [animation]="animatedIcon === 'facebook' ? 'spin' : undefined"
+        (mouseenter)="onMouseEnter('facebook')"
+        (mouseleave)="onMouseLeave()"
+      ></fa-icon>
+    </a>
+
+    <a href="https://www.fanbox.cc/@sotisleepy" target="_blank">
+      <img src="assets/fanbox.ico" alt="Fanbox" height="45px" class="icon" />
+    </a>
+
+    <!-- Other Links: -->
+    <!-- marshmallow-qa.com/NKsotis -->
+    <!-- discord.gg/jGBPDrXqzJ -->
+    <!-- nkshoujo.cyberstream.ch/sotis -->
+  </div>
   <span class="spacer"></span>
-  <span class="intro-item" [matTooltip]="subsCount">{{ subsCountK }} 訂閱</span>
-  <span
-    class="intro-item"
-    [matTooltip]="streamsNonDuplicateCount.toString() + ' 非重複'"
-    >{{ streamsCount }} 曲目</span
-  >
+  <span class="intro-item">{{ subsCountK }} 訂閱</span>
+  <span class="intro-item">{{ streamsCount }} 曲目</span>
   <span class="intro-item">{{ coversCount }} 翻唱</span>
 </div>
 
 <br />
 
-<div class="links">
-  <img width="65px" src="assets/niconico.png" />
-  <a href="https://www.youtube.com/@sotisleepy" target="_blank">
-    <fa-icon
-      [icon]="['fab', 'youtube']"
-      size="3x"
-      class="icon"
-      [animation]="animatedIcon === 'youtube' ? 'beat' : undefined"
-      (mouseenter)="onMouseEnter('youtube')"
-      (mouseleave)="onMouseLeave()"
-    ></fa-icon>
-  </a>
-
-  <a href="https://twitter.com/sotisleepy" target="_blank">
-    <fa-icon
-      [icon]="['fab', 'twitter']"
-      size="3x"
-      class="icon"
-      [animation]="animatedIcon === 'twitter' ? 'bounce' : undefined"
-      (mouseenter)="onMouseEnter('twitter')"
-      (mouseleave)="onMouseLeave()"
-    ></fa-icon>
-  </a>
-
-  <a href="https://www.instagram.com/sotisleepy" target="_blank">
-    <fa-icon
-      [icon]="['fab', 'instagram']"
-      size="3x"
-      class="icon"
-      [animation]="animatedIcon === 'instagram' ? 'shake' : undefined"
-      (mouseenter)="onMouseEnter('instagram')"
-      (mouseleave)="onMouseLeave()"
-    ></fa-icon>
-  </a>
-
-  <a
-    href="https://www.facebook.com/profile.php?id=100083727110341"
-    target="_blank"
-  >
-    <fa-icon
-      [icon]="['fab', 'facebook']"
-      size="3x"
-      class="icon"
-      [animation]="animatedIcon === 'facebook' ? 'spin' : undefined"
-      (mouseenter)="onMouseEnter('facebook')"
-      (mouseleave)="onMouseLeave()"
-    ></fa-icon>
-  </a>
-
-  <a href="https://www.fanbox.cc/@sotisleepy" target="_blank">
-    <img src="https://www.fanbox.cc/favicon.ico" alt="Fanbox" />
-  </a>
-
-  <!-- Other Links: -->
-  <!-- marshmallow-qa.com/NKsotis -->
-  <!-- discord.gg/jGBPDrXqzJ -->
-  <!-- nkshoujo.cyberstream.ch/sotis -->
-</div>
-
 <div class="description">
   <p>
-    性別：女，年齡：14，身高：148，體重：38，生日：10/16<br>
+    性別：女，年齡：14，身高：148，體重：38，生日：10/16<br />
     職業：轉世勇者，喜好：宅文化、喝牛奶，不擅長：社交、現充
   </p>
   <p>
@@ -88,7 +81,4 @@
     不喜歡接受訓練也不想上戰場的她，最終成為了一名廢人般的家裡蹲。
     性格內向、怕生，沒有幹勁，與不熟悉的人說話時會有點溝通障礙。
   </p>
-  <!-- <p> -->
-  <!--   Furigana: <ruby>〇〇〇〇〇<rt>あいしてる</rt></ruby> -->
-  <!-- </p> -->
 </div>

@@ -6,7 +6,6 @@
   display: flex;
   padding: 8px 8px;
   justify-content: space-between;
-  flex-wrap: wrap;
 }
 
 .flex-left {
@@ -91,5 +90,15 @@ a {
   text-align: center;
   height: 700px;
   color: white;
+}
+
+.original-link {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+}
+
+.yticon {
+  color: red;
 }
 
