@@ -11,13 +11,18 @@ mat-form-field label {
   font-family: SourceHanSans !important;
 }
 
-.mat-mdc-tab, .mat-mdc-form-field, .mat-mdc-cell, .mat-mdc-header-cell {
+.mat-mdc-form-field, .mat-mdc-cell, .mat-mdc-header-cell {
   font-family: SourceHanSans !important;
+}
+
+.mat-mdc-tab-header {
+  --mat-tab-header-label-text-font: SourceHanSans !important;
 }
 
 body {
   margin: 0;
   font-family: SourceHanSans;
-  background: url('assets/background.png');
+  background: url('assets/background.png') no-repeat center center fixed;
+  background-size: cover;
   backdrop-filter: blur(8px) contrast(80%);
 }

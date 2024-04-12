@@ -149,6 +149,10 @@ export class SongListComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+    this.paginator._intl.firstPageLabel = '';
+    this.paginator._intl.previousPageLabel = '';
+    this.paginator._intl.nextPageLabel = '';
+    this.paginator._intl.lastPageLabel = '';
     this.dataSource.sort = this.sort;
   }
 

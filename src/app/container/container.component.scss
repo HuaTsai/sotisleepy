@@ -102,3 +102,9 @@ a {
   color: red;
 }
 
+.mat-mdc-tab-group {
+  --mat-tab-header-inactive-label-text-color: white;
+  --mat-tab-header-active-label-text-color: white;
+  --mat-tab-header-active-focus-label-text-color: white;
+}
+
