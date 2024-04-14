@@ -16,6 +16,7 @@ import { YoutubeService } from '../services/youtube.service';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
 import { SongService } from '../services/song.service';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-container',
@@ -32,6 +33,7 @@ import { SongService } from '../services/song.service';
     MediaDirective,
     ClipboardModule,
     MatTooltipModule,
+    MatDialogModule,
   ],
   templateUrl: './container.component.html',
   styleUrl: './container.component.scss',
@@ -50,6 +52,7 @@ export class ContainerComponent implements OnInit {
   constructor(
     private youtubeService: YoutubeService,
     private songService: SongService,
+    public dialog: MatDialog,
   ) {}
 
   ngOnInit() {
@@ -116,4 +119,19 @@ export class ContainerComponent implements OnInit {
       });
     }
   }
+
+  openInfo() {
+    const dialogRef = this.dialog.open(ReleaseNotesComponent);
+  }
 }
+
+@Component({
+  selector: 'release-notes',
+  templateUrl: 'release-notes.html',
+  standalone: true,
+  imports: [MatDialogModule, MatButtonModule],
+})
+export class ReleaseNotesComponent {
+  constructor() {}
+}
+
