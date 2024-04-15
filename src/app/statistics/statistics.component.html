@@ -1,0 +1,29 @@
+<mat-grid-list cols="20" rowHeight="85px">
+  @for (tile of tiles; track tile) {
+    <mat-grid-tile [rowspan]="tile.rows" [colspan]="tile.cols">
+      <div style="text-align: center; diplay: flex; flex-direction: column;">
+        <div style="font-weight: bold; color: white; margin: 10px 0;">{{tile.item}}</div>
+        <div style="font-weight: bold; color: white">{{tile.value}}</div>
+      </div>
+    </mat-grid-tile>
+  }
+  @for (i of [1, 2, 3, 4]; track i) {
+    <mat-grid-tile rowspan="4" colspan="5">
+      <div style="text-align: center; diplay: flex; flex-direction: column;">
+        <div style="font-weight: bold; color: white">一些排名</div>
+        <ol style="font-weight: bold; color: white">
+          <li>xxx</li>
+          <li>xxx</li>
+          <li>xxx</li>
+          <li>xxx</li>
+          <li>xxx</li>
+          <li>xxx</li>
+          <li>xxx</li>
+          <li>xxx</li>
+          <li>xxx</li>
+          <li>xxx</li>
+        </ol>
+      </div>
+    </mat-grid-tile>
+  }
+</mat-grid-list>
