@@ -23,6 +23,7 @@ import {
   faUserGroup,
   faGuitar,
   faLightbulb,
+  faCircleInfo,
 } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -49,6 +50,7 @@ export class AppComponent {
     library.addIcons(faUserGroup);
     library.addIcons(faGuitar);
     library.addIcons(faLightbulb);
+    library.addIcons(faCircleInfo);
 
     // Brand icons
     library.addIcons(faYoutube);
