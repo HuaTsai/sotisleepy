@@ -16,6 +16,7 @@ import { YoutubeService } from '../services/youtube.service';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
 import { SongService } from '../services/song.service';
+import { StatisticsComponent } from '../statistics/statistics.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 @Component({
@@ -33,13 +34,13 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
     MediaDirective,
     ClipboardModule,
     MatTooltipModule,
+    StatisticsComponent,
     MatDialogModule,
   ],
   templateUrl: './container.component.html',
   styleUrl: './container.component.scss',
 })
 export class ContainerComponent implements OnInit {
-  // videoId = 'https://www.youtube-nocookie.com/embed/ya5lC2iYqgE';
   videoId = 'https://www.youtube-nocookie.com/embed/';
   songId = 0;
   lyrics = '';

@@ -1,0 +1,31 @@
+<br />
+<mat-grid-list cols="20" rowHeight="85px">
+  @for (tile of tiles; track tile) {
+    <mat-grid-tile [rowspan]="tile.rows" [colspan]="tile.cols">
+      <div class="tile">
+        <div class="item">{{tile.item}}</div>
+        <div class="value">{{tile.value}}</div>
+      </div>
+    </mat-grid-tile>
+  }
+
+  @for (rank of [public_rank, all_rank, artist_rank]; track rank) {
+    <mat-grid-tile rowspan="4" colspan="5">
+      <div class="rank-tile">
+        <div class="item">{{rank.item}}</div>
+        @for (song of rank.value; track song) {
+          <div class="value">{{song}}</div>
+        }
+      </div>
+    </mat-grid-tile>
+  }
+
+  <mat-grid-tile rowspan="4" colspan="5">
+    <div class="rank-tile">
+      <div class="item">{{audience_rank.item}}</div>
+      @for (song of audience_rank.value; track song) {
+        <div class="value">{{song}}</div>
+      }
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>
