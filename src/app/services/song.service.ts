@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { StreamSong, CoverSong, Statistic, LyricsURL } from '../common/datatype'
+import { StreamSong, CoverSong, Statistics, LyricsURL } from '../common/datatype'
 import { Observable, delay, retryWhen, shareReplay, take } from 'rxjs';
 import { environment } from '../../environments/environment';
 
@@ -32,7 +32,7 @@ export class SongService {
     retryWhen(errors => errors.pipe(delay(1000), take(3)))
   );
 
-  statistic$ = this.http.get<Statistic>(this.apiUrl + '/statistic/').pipe(
+  statistic$ = this.http.get<Statistics>(this.apiUrl + '/statistics/').pipe(
     shareReplay(1),
     retryWhen(errors => errors.pipe(delay(1000), take(3)))
   );
