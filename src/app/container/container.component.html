@@ -1,5 +1,3 @@
-<script src="https://www.youtube.com/iframe_api"></script>
-
 <div class="header">
   <mat-toolbar color="primary">
     <img src="assets/sotis_logo.png" height="35px" />
@@ -50,7 +48,7 @@
     <div *appMedia="'(min-width: 768px)'" class="desktop">
       <iframe
         id="player"
-        [src]="videoId | safe: 'resourceUrl'"
+        [src]="'https://www.youtube.com/embed/' + latestUrl + '?enablejsapi=1&cc_load_policy=1' | safe: 'resourceUrl'"
         title="Youtube Player"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -62,9 +60,9 @@
     <div *appMedia="'(max-width: 767px)'" class="mobile">
       <iframe
         id="player"
+        [src]="'https://www.youtube.com/embed/' + latestUrl + '?enablejsapi=1&cc_load_policy=1' | safe: 'resourceUrl'"
         width="100%"
         height="225"
-        [src]="videoId | safe: 'resourceUrl'"
         title="Youtube Player"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -82,7 +80,7 @@
       <mat-tab-group (selectedTabChange)="onTabChange($event)" mat-stretch-tabs="false">
         <mat-tab label="直播歌單">
           <app-song-list
-            [songType]="'streams'"
+            [songType]="'publics'"
             (dataLoadedEvent)="onDataLoaded($event)"
             (songSelected)="getSongSelected($event)"
             #streams
@@ -100,7 +98,7 @@
           <app-song-list
             [songType]="'members'"
             (dataLoadedEvent)="onDataLoaded($event)"
-            (songSelected)="getSongSelected($event, false)"
+            (songSelected)="getSongSelected($event)"
             #members
           ></app-song-list>
         </mat-tab>
@@ -109,7 +107,7 @@
             [songType]="'unlisteds'"
             (dataLoadedEvent)="onDataLoaded($event)"
             (songSelected)="getSongSelected($event)"
-            #unlisted
+            #unlisteds
           ></app-song-list>
         </mat-tab>
         <mat-tab label="歌詞" [disabled]="songId <= 1" class="lyrics-container">
