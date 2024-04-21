@@ -19,6 +19,8 @@ import { SongService } from '../services/song.service';
 import { StatisticsComponent } from '../statistics/statistics.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
+declare var YT: any;
+
 @Component({
   selector: 'app-container',
   standalone: true,
@@ -41,11 +43,12 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
   styleUrl: './container.component.scss',
 })
 export class ContainerComponent implements OnInit {
-  videoId = 'https://www.youtube-nocookie.com/embed/';
+  latestUrl = '';
   songId = 0;
+  songType = '';
   lyrics = '';
   originalURL = '';
-  videoShort = 'https://www.youtube.com/embed/Bg1dwt79iG8';
+  player?: any;
 
   dataLoadedCount = 0;
   allDataLoaded = false;
@@ -56,29 +59,30 @@ export class ContainerComponent implements OnInit {
     public dialog: MatDialog,
   ) {}
 
+  @ViewChild('streams') streamsSongList!: SongListComponent;
+  @ViewChild('covers') coversSongList!: SongListComponent;
+  @ViewChild('unlisteds') unlistedsSongList!: SongListComponent;
+
   ngOnInit() {
-    this.youtubeService.getLatestUrl$.subscribe(
-      (data) =>
-        (this.videoId = 'https://www.youtube-nocookie.com/embed/' + data),
-    );
+    this.youtubeService.getLatestUrl$.subscribe((data) => {
+      this.latestUrl = data;
+      this.player = new YT.Player('player', {
+        events: {
+          'onStateChange': (event: any) => {
+            if (event.data === YT.PlayerState.ENDED) {
+              if (this.songType === 'publics') {
+                this.streamsSongList.selectNextSong();
+              } else if (this.songType === 'covers') {
+                this.coversSongList.selectNextSong();
+              } else if (this.songType === 'unlisteds') {
+                this.unlistedsSongList.selectNextSong();
+              }
+            }
+          }
+        }
+      });
+    });
   }
-
-  // TODO: Add youtube player api
-  // ytstatus = 'unstarted';
-  //
-  // onYoutubeIframeAPIReady() {
-  //   player = new YT.Player('player', {
-  //     events: {
-  //       'onStateChange': onPlayerStateChange
-  //     }
-  //   });
-  // }
-
-  // onPlayerStateChange(event) {
-  //   if (event.data === YT.PlayerState.PLAYING) {
-  //     this.ytstatus = 'Playing';
-  //   }
-  // }
 
   onDataLoaded(event: boolean) {
     this.dataLoadedCount++;
@@ -87,23 +91,16 @@ export class ContainerComponent implements OnInit {
     }
   }
 
-  toEmbedUrl(song: RenderSong): string {
-    return (
-      'https://www.youtube-nocookie.com/embed/' +
-      song.youtube_url +
-      '?autoplay=1&cc_load_policy=1&enablejsapi=1' +
-      '&start=' +
-      song.start_time +
-      '&end=' +
-      (song.start_time + song.duration) // XXX: May remove
-    );
-  }
-
-  getSongSelected(song: RenderSong, ispublic = true) {
-    if (ispublic) {
-      this.videoId = this.toEmbedUrl(song);
+  getSongSelected(value: {renderSong: RenderSong, songType: string}) {
+    if (value.songType !== 'members') {
+      this.player.loadVideoById({
+        videoId: value.renderSong.youtube_url,
+        startSeconds: value.renderSong.start_time,
+        endSeconds: value.renderSong.start_time + value.renderSong.duration
+      });
     }
-    this.songId = song.song_id;
+    this.songId = value.renderSong.song_id;
+    this.songType = value.songType;
   }
 
   @ViewChild('sharetooltip') tooltip!: MatTooltip;
