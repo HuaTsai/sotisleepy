@@ -42,6 +42,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 export class SongListComponent implements AfterViewInit {
   displayedColumns: string[] = ['name', 'artist', 'date', 'duration'];
   dataSource = new MatTableDataSource<RenderSong>();
+  currentIndex = 0;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -56,7 +57,7 @@ export class SongListComponent implements AfterViewInit {
         this.dataSource.data = this.convertCoverSongToRenderSong(covers);
         this.dataLoadedEvent.emit(true);
       });
-    } else if (this.songType === 'streams') {
+    } else if (this.songType === 'publics') {
       this.songService.publics$.subscribe((publics) => {
         this.dataSource.data = this.convertStreamSongToRenderSong(publics);
         this.dataLoadedEvent.emit(true);
@@ -165,12 +166,19 @@ export class SongListComponent implements AfterViewInit {
     }
   }
 
-  // @Input() type: string = 'song';
-  @Output() songSelected = new EventEmitter<RenderSong>();
+  @Output() songSelected = new EventEmitter<{renderSong: RenderSong, songType: string}>();
   selectSong(song: RenderSong) {
-    this.songSelected.emit(song);
+    this.currentIndex = this.dataSource.filteredData.indexOf(song);
+    this.songSelected.emit({renderSong: song, songType: this.songType});
     if (this.songType === 'members') {
       window.open(this.toExternalUrl(song), "_blank");
+    }
+  }
+
+  selectNextSong() {
+    if (this.currentIndex + 1 < this.dataSource.filteredData.length) {
+      this.currentIndex++;
+      this.songSelected.emit({renderSong: this.dataSource.filteredData[this.currentIndex], songType: this.songType});
     }
   }
 }
