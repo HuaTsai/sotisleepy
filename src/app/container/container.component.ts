@@ -18,6 +18,7 @@ import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
 import { SongService } from '../services/song.service';
 import { StatisticsComponent } from '../statistics/statistics.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { WordcloudComponent } from '../wordcloud/wordcloud.component';
 
 declare var YT: any;
 
@@ -38,6 +39,7 @@ declare var YT: any;
     MatTooltipModule,
     StatisticsComponent,
     MatDialogModule,
+    WordcloudComponent,
   ],
   templateUrl: './container.component.html',
   styleUrl: './container.component.scss',
