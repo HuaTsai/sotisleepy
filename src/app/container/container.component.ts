@@ -120,6 +120,11 @@ export class ContainerComponent implements OnInit {
     }
   }
 
+  @ViewChild(WordcloudComponent) wordcloud!: WordcloudComponent;
+  onClickWordCloudTab() {
+    this.wordcloud.refresh();
+  }
+
   openInfo() {
     const dialogRef = this.dialog.open(ReleaseNotesComponent);
   }

@@ -13,8 +13,10 @@ export class WordcloudComponent implements OnInit {
   wcdata: {text: string, value: number}[] = [];
   towcdataid = new Map<string, number>();
 
-  readonly generalWeight = 5;
+  readonly generalWeight = 4;
   readonly coverWeight = 2;
+  readonly offset = 2;
+  loaded = 0;
 
   constructor(private songService: SongService) { }
 
@@ -27,6 +29,7 @@ export class WordcloudComponent implements OnInit {
         }
         data.get(stream.name)?.add(stream.youtube_url);
       });
+      this.loaded++;
       this.updateWordCloudData(data);
     });
 
@@ -38,6 +41,7 @@ export class WordcloudComponent implements OnInit {
         }
         data.get(member.name)?.add(member.youtube_url);
       });
+      this.loaded++;
       this.updateWordCloudData(data);
     });
 
@@ -49,6 +53,7 @@ export class WordcloudComponent implements OnInit {
         }
         data.get(unlisted.name)?.add(unlisted.youtube_url);
       });
+      this.loaded++;
       this.updateWordCloudData(data);
     });
 
@@ -60,6 +65,7 @@ export class WordcloudComponent implements OnInit {
         }
         data.get(cover.name)?.add(cover.youtube_url);
       });
+      this.loaded++;
       this.updateWordCloudData(data, this.coverWeight);
     });
   }
@@ -68,12 +74,17 @@ export class WordcloudComponent implements OnInit {
     for (let [name, urls] of data.entries()) {
       if (!this.towcdataid.has(name)) {
         this.towcdataid.set(name, this.wcdata.length);
-        this.wcdata = [...this.wcdata, {text: name, value: urls.size * this.generalWeight * weight}];
+        this.wcdata = [...this.wcdata, {text: name, value: this.offset + urls.size * this.generalWeight * weight}];
       } else {
         const id = this.towcdataid.get(name)!;
         this.wcdata[id].value += urls.size * this.generalWeight * weight;
         this.wcdata = [...this.wcdata];
       }
     }
+  }
+
+  refresh() {
+    if (this.loaded !== 4) return;
+    this.wcdata = [...this.wcdata];
   }
 }
