@@ -13,6 +13,9 @@ export class WordcloudComponent implements OnInit {
   wcdata: {text: string, value: number}[] = [];
   towcdataid = new Map<string, number>();
 
+  readonly generalWeight = 5;
+  readonly coverWeight = 2;
+
   constructor(private songService: SongService) { }
 
   ngOnInit() {
@@ -57,7 +60,7 @@ export class WordcloudComponent implements OnInit {
         }
         data.get(cover.name)?.add(cover.youtube_url);
       });
-      this.updateWordCloudData(data, 2);
+      this.updateWordCloudData(data, this.coverWeight);
     });
   }
 
@@ -65,10 +68,10 @@ export class WordcloudComponent implements OnInit {
     for (let [name, urls] of data.entries()) {
       if (!this.towcdataid.has(name)) {
         this.towcdataid.set(name, this.wcdata.length);
-        this.wcdata = [...this.wcdata, {text: name, value: urls.size * 7 * weight}];
+        this.wcdata = [...this.wcdata, {text: name, value: urls.size * this.generalWeight * weight}];
       } else {
         const id = this.towcdataid.get(name)!;
-        this.wcdata[id].value += urls.size * weight;
+        this.wcdata[id].value += urls.size * this.generalWeight * weight;
         this.wcdata = [...this.wcdata];
       }
     }
