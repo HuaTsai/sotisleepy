@@ -72,6 +72,21 @@ export class SongListComponent implements AfterViewInit {
         this.dataSource.data = this.convertStreamSongToRenderSong(unlisteds);
         this.dataLoadedEvent.emit(true);
       });
+    } else if (this.songType === 'originals') {
+      this.dataSource.data = [
+        {
+          id: 1,
+          name: '勇者様だぞ！',
+          tags: '第一首也是最後一首原創曲',
+          artist: 'Myo Sotis ft. 暗雨Anyu',
+          lang: 'Japanese',
+          date: new Date('2024-05-09'),
+          youtube_url: 'tpXMYr7G3rM',
+          duration: 85,
+          start_time: 0,
+          song_id: 29,
+        }
+      ];
     }
   }
 

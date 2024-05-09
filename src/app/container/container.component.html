@@ -86,6 +86,13 @@
             #streams
           ></app-song-list>
         </mat-tab>
+        <mat-tab label="原創歌單">
+          <app-song-list
+            [songType]="'originals'"
+            (songSelected)="getSongSelected($event)"
+            #originals
+          ></app-song-list>
+        </mat-tab>
         <mat-tab label="翻唱歌單">
           <app-song-list
             [songType]="'covers'"
