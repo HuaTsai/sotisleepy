@@ -137,32 +137,32 @@ export class ContainerComponent implements OnInit {
   imports: [MatDialogModule, MatButtonModule],
 })
 export class ReleaseNotesComponent implements OnInit, OnDestroy {
-  readonly gradDate = new Date('2024-05-10T12:00:00Z');
-  diffDays = 0;
-  diffHours = 0;
-  timeoutId?: number;
-  timerId?: number;
+  // readonly gradDate = new Date('2024-05-10T12:00:00Z');
+  // diffDays = 0;
+  // diffHours = 0;
+  // timeoutId?: number;
+  // timerId?: number;
 
   ngOnInit() {
-    this.updateDiff();
-    const now = new Date();
-    const msToNextHour = 1000 * 60 * 60 - now.getTime() % (1000 * 60 * 60);
-    this.timeoutId = setTimeout(() => {
-      this.updateDiff();
-      this.timerId = setInterval(() => this.updateDiff(), 1000 * 60 * 60);
-    }, msToNextHour);
+    // this.updateDiff();
+    // const now = new Date();
+    // const msToNextHour = 1000 * 60 * 60 - now.getTime() % (1000 * 60 * 60);
+    // this.timeoutId = setTimeout(() => {
+    //   this.updateDiff();
+    //   this.timerId = setInterval(() => this.updateDiff(), 1000 * 60 * 60);
+    // }, msToNextHour);
   }
 
   ngOnDestroy() {
-    if (this.timeoutId) clearTimeout(this.timeoutId);
-    if (this.timerId) clearInterval(this.timerId);
+    // if (this.timeoutId) clearTimeout(this.timeoutId);
+    // if (this.timerId) clearInterval(this.timerId);
   }
 
   updateDiff() {
-    const now = new Date();
-    const diff = this.gradDate.getTime() - now.getTime();
-    this.diffDays = Math.floor(diff / (1000 * 60 * 60 * 24));
-    this.diffHours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    // const now = new Date();
+    // const diff = this.gradDate.getTime() - now.getTime();
+    // this.diffDays = Math.floor(diff / (1000 * 60 * 60 * 24));
+    // this.diffHours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   }
 }
 
