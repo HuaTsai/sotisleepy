@@ -27,12 +27,12 @@ export class IntroComponent implements OnInit {
   constructor(private youtubeService: YoutubeService, private songService: SongService) {}
 
   ngOnInit() {
-    this.youtubeService.getSubsCount$.subscribe(
-      (data) => {
-        this.subsCount = data.toString();
-        this.subsCountK = (data / 1000).toFixed(1).toString() + 'k';
-      }
-    );
+    // this.youtubeService.getSubsCount$.subscribe(
+    //   (data) => {
+    //     this.subsCount = data.toString();
+    //     this.subsCountK = (data / 1000).toFixed(1).toString() + 'k';
+    //   }
+    // );
     this.songService.statistic$.subscribe(
       (data) => {
         this.streamsCount = data.stream_count;

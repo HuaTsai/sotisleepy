@@ -45,7 +45,8 @@ declare var YT: any;
   styleUrl: './container.component.scss',
 })
 export class ContainerComponent implements OnInit {
-  latestUrl = '';
+  latestUrl = 'pDWZTs2UvG8';
+  startSeconds = 0;
   songId = 0;
   songType = '';
   lyrics = '';
@@ -66,24 +67,24 @@ export class ContainerComponent implements OnInit {
   @ViewChild('unlisteds') unlistedsSongList!: SongListComponent;
 
   ngOnInit() {
-    this.youtubeService.getLatestUrl$.subscribe((data) => {
-      this.latestUrl = data;
-      this.player = new YT.Player('player', {
-        events: {
-          'onStateChange': (event: any) => {
-            if (event.data === YT.PlayerState.ENDED) {
-              if (this.songType === 'publics') {
-                this.streamsSongList.selectNextSong();
-              } else if (this.songType === 'covers') {
-                this.coversSongList.selectNextSong();
-              } else if (this.songType === 'unlisteds') {
-                this.unlistedsSongList.selectNextSong();
-              }
-            }
-          }
-        }
-      });
-    });
+    // this.youtubeService.getLatestUrl$.subscribe((data) => {
+    //   this.latestUrl = data;
+    //   this.player = new YT.Player('player', {
+    //     events: {
+    //       'onStateChange': (event: any) => {
+    //         if (event.data === YT.PlayerState.ENDED) {
+    //           if (this.songType === 'publics') {
+    //             this.streamsSongList.selectNextSong();
+    //           } else if (this.songType === 'covers') {
+    //             this.coversSongList.selectNextSong();
+    //           } else if (this.songType === 'unlisteds') {
+    //             this.unlistedsSongList.selectNextSong();
+    //           }
+    //         }
+    //       }
+    //     }
+    //   });
+    // });
   }
 
   onDataLoaded(event: boolean) {
@@ -94,6 +95,10 @@ export class ContainerComponent implements OnInit {
   }
 
   getSongSelected(value: {renderSong: RenderSong, songType: string}) {
+    this.latestUrl = value.renderSong.youtube_url;
+    this.songId = value.renderSong.song_id;
+    this.songType = value.songType;
+    this.startSeconds = value.renderSong.start_time;
     // if (value.songType !== 'members') {
     //   this.player.loadVideoById({
     //     videoId: value.renderSong.youtube_url,
@@ -101,8 +106,6 @@ export class ContainerComponent implements OnInit {
     //     endSeconds: value.renderSong.start_time + value.renderSong.duration
     //   });
     // }
-    this.songId = value.renderSong.song_id;
-    this.songType = value.songType;
   }
 
   @ViewChild('sharetooltip') tooltip!: MatTooltip;
