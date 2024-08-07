@@ -94,13 +94,13 @@ export class ContainerComponent implements OnInit {
   }
 
   getSongSelected(value: {renderSong: RenderSong, songType: string}) {
-    if (value.songType !== 'members') {
-      this.player.loadVideoById({
-        videoId: value.renderSong.youtube_url,
-        startSeconds: value.renderSong.start_time,
-        endSeconds: value.renderSong.start_time + value.renderSong.duration
-      });
-    }
+    // if (value.songType !== 'members') {
+    //   this.player.loadVideoById({
+    //     videoId: value.renderSong.youtube_url,
+    //     startSeconds: value.renderSong.start_time,
+    //     endSeconds: value.renderSong.start_time + value.renderSong.duration
+    //   });
+    // }
     this.songId = value.renderSong.song_id;
     this.songType = value.songType;
   }
